@@ -92,20 +92,23 @@
 
                         <p class="slide-ti"><span class="color-text">ফ্রী</span> ব্যাবহার করুন  সফটওয়্যার</p>
                         <p class="slide-text">সহজ হিসাব আপনাকে দিচ্ছে  পুরো এক মাসের ফ্রি ট্রায়েল</p>
-                        <button class="btn btn-slide">Free Trial</button>
+                        <button class="btn btn-slide" href="javascript:void(0)"  data-toggle="modal"
+                                data-target="#contactModal">Free Trial</button>
 
                     </div>
                     <div class="carousel-item">
                         <p class="slide-ti">কাস্টম <span class="color-text">সফটওয়্যার</span></p>
                         <p class="slide-text">আপনার ব্যবসায়ের ধরন অনুযায়ী আপনার পছন্দমত সফটওয়্যার পাবেন। আমরা আপনার সকল
                             রিকায়ারমেন্ট এর উপর সফটওয়্যার তৈরি করতে প্রস্তুত।</p>
-                        <button class="btn btn-slide">Contact Us</button>
+                        <button class="btn btn-slide" href="javascript:void(0)"  data-toggle="modal"
+                                data-target="#contactModal">Contact Us</button>
                     </div>
                     <div class="carousel-item">
                         <p class="slide-ti">কাস্টম <span class="color-text">সফটওয়্যার</span></p>
                         <p class="slide-text">আপনার ব্যবসায়ের ধরন অনুযায়ী আপনার পছন্দমত সফটওয়্যার পাবেন। আমরা আপনার সকল
                             রিকায়ারমেন্ট এর উপর সফটওয়্যার তৈরি করতে প্রস্তুত।</p>
-                        <button class="btn btn-slide">Contact Us</button>
+                        <button class="btn btn-slide" href="javascript:void(0)"  data-toggle="modal"
+                                data-target="#contactModal">Contact Us</button>
                     </div>
                 </div>
 

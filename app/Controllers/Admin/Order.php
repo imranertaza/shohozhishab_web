@@ -22,14 +22,14 @@ class Order extends BaseController
 
     public function index()
     {
-        $isLoggedIn = $this->session->isLoggedIn;
-        $role_id = $this->session->role;
-        if (!isset($isLoggedIn) || $isLoggedIn != TRUE) {
+        $isLoggedInWebAdmin = $this->session->isLoggedInWebAdmin;
+        
+        if (!isset($isLoggedInWebAdmin) || $isLoggedInWebAdmin != TRUE) {
             return redirect()->to(site_url('Admin/login'));
         } else {
 
-            $table = DB()->table('billing');
-            $data['billing'] = $table->get()->getResult();
+            $table = DB()->table('orders');
+            $data['orders'] = $table->get()->getResult();
             echo view('Admin/header');
             echo view('Admin/sidebar');
             echo view('Admin/Order/list',$data);
@@ -38,9 +38,8 @@ class Order extends BaseController
     }
 
     public function view($id){
-        $isLoggedIn = $this->session->isLoggedIn;
-        $role_id = $this->session->role;
-        if (!isset($isLoggedIn) || $isLoggedIn != TRUE) {
+        $isLoggedInWebAdmin = $this->session->isLoggedInWebAdmin;
+        if (!isset($isLoggedInWebAdmin) || $isLoggedInWebAdmin != TRUE) {
             return redirect()->to(site_url('Admin/login'));
         } else {
 

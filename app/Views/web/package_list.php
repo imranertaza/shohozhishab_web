@@ -21,7 +21,7 @@
 
                     <p class="price-text-5">Installation <span class="color-text-2"><?php echo $row->installation_fee; ?>tk</span></p>
                     <center><p><a href="<?php echo base_url()?>/Home/detail" class="price-text-6">View Details</a></p></center>
-                    <a href="<?php echo base_url() ?>/Home/get_started/<?php echo $row->package_id;?>" class="btn btn-price" style="color: #ffffff;">Get Started</a>
+                    <a href="<?php echo base_url() ?>/Web/Dashboard/get_started/<?php echo $row->package_id;?>" class="btn btn-price" style="color: #ffffff;">Get Started</a>
                 </div>
             <?php } ?>
 

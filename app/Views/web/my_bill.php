@@ -8,41 +8,29 @@
             <table class="table cus-tab">
                 <thead>
                     <tr>
-                        <th>রেফারেন্স</th>
+                        <th>ক্রমিক</th>
                         <th>অর্ডার নাম্বার</th>
                         <th>ইস্যু ডেট</th>
-                        <th>এমাউন্ট</th>
                         <th>ব্যলেন্স</th>
                         <th>স্ট্যাটাস</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $i=1; foreach ($invoice as $val){ ?>
                     <tr>
-                        <td>WE25889568</td>
-                        <td>5889568</td>
-                        <td>2 JAN 2023</td>
-                        <td>300tk</td>
-                        <td>30025tk</td>
-                        <td><button class="btn demo-btn" style="border-radius: 20px;">UNPAID</button></td>
+                        <td><?php echo $i++;?></td>
+                        <td><?php echo $val->order_id;?></td>
+                        <td><?php echo invoiceDateFormat($val->createdDtm);?></td>
+                        <td><?php echo $val->amount_original;?>tk</td>
+                        <td>
+                            <?php if ($val->amount_original == 'Unpaid'){ ?>
+                            <button class="btn demo-btn" style="border-radius: 20px;">UNPAID</button>
+                            <?php }else{ ?>PAID<?php } ?>
+                        </td>
                     </tr>
+                    <?php } ?>
 
-                    <tr>
-                        <td>WE25889568</td>
-                        <td>5889568</td>
-                        <td>2 JAN 2023</td>
-                        <td>300tk</td>
-                        <td>30025tk</td>
-                        <td>PAID</td>
-                    </tr>
 
-                    <tr>
-                        <td>WE25889568</td>
-                        <td>5889568</td>
-                        <td>2 JAN 2023</td>
-                        <td>300tk</td>
-                        <td>30025tk</td>
-                        <td><button class="btn demo-btn" style="border-radius: 20px;">UNPAID</button></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

@@ -2648,3 +2648,35 @@ body.app_version .dev-list .widget-title small{
     width: 500px
 }
 
+#contactModal .text{
+    margin-left: 28%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #1E1E1E;
+}
+#contactModal .text-ti{
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #1E1E1E;
+}
+.shop_create_mod{
+    background-color: #FFF3F0;
+    border-radius: 33px;
+}
+.mob_viewdet{
+    display: none;
+}
+@media only screen and (max-width: 990px){
+    .mob_viewdet{
+        display: block;
+    }
+    .web_viewdet{
+        display: none;
+    }
+}

@@ -44,6 +44,7 @@ $routes->get('/my_package', 'Web\Dashboard::my_package');
 $routes->get('/my_bill', 'Web\Dashboard::my_bill');
 $routes->get('/tutorial', 'Web\Dashboard::tutorial');
 $routes->get('/user_guide', 'Web\Dashboard::user_guide');
+$routes->get('/shop_create', 'Web\Dashboard::shop_create');
 $routes->get('/profile', 'Web\Dashboard::profile');
 
 /*

@@ -3,36 +3,29 @@
         <div class="col-12 da-div-pd-20">
             <?php echo $top_mer;?>
         </div>
-        <div class="col-12 da-div-pd-20" style="text-align: center;margin-top: 40px;">
-            <center><img src="<?php echo base_url()?>/images/shop_add_img.svg" alt=""></center>
-            <p class="con-sh">নতুন সপ তৈরি করুন</p>
-        </div>
         <div class="col-12 da-div-pd-20" style="margin-top: 60px;">
             <table class="table cus-tab">
                 <thead>
                 <tr>
+                    <th>ক্রমিক</th>
                     <th>সপ এর নাম</th>
-                    <th>ইউজার আইডি</th>
-                    <th>পাসওয়ার্ড</th>
-                    <th>রিনিউ করুন</th>
+                    <th>প্যকেজ এর নাম</th>
+                    <th>মেয়াদ শেষ হওয়ার তারিখ</th>
+                    <th>স্ট্যাটাস</th>
+                    <th>প্রক্রিয়া</th>
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td>selims tailors</td>
-                    <td>syed irfan eartaza</td>
-                    <td>123456</td>
-                    <td><button class="btn demo-btn" style="border-radius: 20px;">এডিট করুন</button></td>
-                </tr>
-
-                <tr>
-                    <td>selims tailors</td>
-                    <td>syed irfan eartaza</td>
-                    <td>123456</td>
-                    <td><button class="btn demo-btn" style="border-radius: 20px;">এডিট করুন</button></td>
-                </tr>
-
+                <?php $i =1; foreach ($orders as $val){ $s_shop_id = get_data_by_id('shohozHishab_shop_id','shops','shop_id',$val->shop_id); ?>
+                    <tr>
+                        <td><?php echo $i++ ?></td>
+                        <td><?php echo get_data_by_id('shopName','shops','shop_id',$val->shop_id);?></td>
+                        <td><?php echo get_data_by_id('name','packages','package_id',$val->package_id);?></td>
+                        <td><?php echo package_expiry($s_shop_id);?></td>
+                        <td><?php echo $val->status;?></td>
+                        <td><?php if ($val->status == 'Inactive'){ ?><a href="<?php echo base_url()?>/Web/Dashboard/re_new/<?php echo $val->order_id;?>" class="btn demo-btn" style="border-radius: 20px;">Renew</a><?php }else{ ?> <button class="btn demo-btn" style="border-radius: 20px;">Shop</button><?php } ?></td>
+                    </tr>
+                <?php } ?>
 
                 </tbody>
             </table>
