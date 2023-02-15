@@ -22,7 +22,7 @@
         </div>
 
         <div class="row" style="margin-top: 75px;">
-            <div class="col-md-12 col-lg-4 col-sm-12 foot-row">
+            <div class="col-md-12 col-lg-4 col-sm-12 ">
                 <p class="sub-ti">যোগাযোগ</p>
                 <div class="sub-box">
                     <div class="sub-box-div-img">
@@ -61,7 +61,8 @@
                          class="up-btn-mar">
                     <img src="<?php echo base_url() ?>/uploads/bi_arrow-up-circle.svg" alt="" onclick="marq_down()"
                          class="dow-btn-mar">
-                    <a href="" class="fot-big-btn-ad">বিস্তারিত দেখুন</a>
+                    <a href="javascript:void(0)"  data-toggle="modal"
+                       data-target="#exampleModal" class="fot-big-btn-ad">বিস্তারিত দেখুন</a>
                     <div id="marq" style="height:280px; overflow: hidden;">
                         <p class="sub-soft-box-text"><img src="<?php echo base_url() ?>/uploads/bi_arrow-right.svg"
                                                           alt=""> কি ভাবে প্রোডাক্ট
@@ -114,7 +115,7 @@
                 </div>
 
             </div>
-            <div class="col-md-12 col-lg-4 col-sm-12 foot-row" style="padding-left: 70px;">
+            <div class="col-md-12 col-lg-4 col-sm-12 foot-row foot-pro" >
                 <p class="sub-ti">আমাদের অন্যান্য প্রোডাক্ট</p>
                 <div class="sub-pro-box">
                     <p class="sub-pro-box-text">স্কুল ম্যানেজমেন্ট</p>
@@ -128,6 +129,29 @@
         </div>
     </div>
 </footer><!-- end footer -->
+
+
+<div class="modal fade " id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog " role="document" style="margin-top: 100px; width: 400px;">
+        <div class="modal-content" style="border-radius: 20px;background-color: #FDEDEA !important;" >
+            <div class="modal-header-h" >
+
+            </div>
+            <div class="modal-body">
+               <center> <p class="text-ti">আমাদরে সাথে যোগাযোগ করুন</p></center>
+                <a href="tel:01979776449"><p class="text"><img src="<?php echo base_url() ?>/uploads/material-symbols_call.png" alt=""> 01979776449</p></a>
+                <a href="tel:01925218713"><p class="text"><img src="<?php echo base_url() ?>/uploads/ant-design_whats-app-outlined.png" alt=""> 01925218713</p></a>
+                <a href="skype:earfaneartaza1"><p class="text"><img src="<?php echo base_url() ?>/uploads/ri_skype-fill.png" alt=""> Earfaneartaza1</p></a>
+
+
+
+
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -164,7 +188,7 @@
         <div class="modal-content">
             <div class="modal-header-lo">
                 <center><p class="log-mod-tit">সাইন ইন করুন</p></center>
-                <!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
                 <center>
                     <div class="hr"></div>
                 </center>
@@ -426,6 +450,27 @@
 
         });
     });
+
+    function btn_selected(btn){
+
+        // alert('Ok');
+        $('.btn-features-cap').removeClass('active');
+        $(btn).addClass('active');
+
+        var attribute = btn.getAttribute("data-url");
+        var imgId = btn.getAttribute("data-id");
+
+        $('#2imgChang2').attr('src', 'uploads/programming-svgrepo-com (1) 1.svg');
+        $('#2imgChang3').attr('src', 'uploads/time-svgrepo-com 1.svg');
+        $('#2imgChang4').attr('src', 'uploads/paper-svgrepo-com 1.svg');
+        $('#2imgChang1').attr('src', 'uploads/breakfast-svgrepo-com 2.svg');
+
+
+        var image = document.getElementById(imgId);
+        image.src = attribute;
+
+
+    }
 
 </script>
 

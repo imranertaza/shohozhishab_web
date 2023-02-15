@@ -31,6 +31,20 @@ class Home extends BaseController
         echo view('web/footer');
     }
 
+    public function detail_mob($packId){
+
+        $data['no_banner'] = 'on';
+        $table = DB()->table('packages');
+        $data['package'] = $table->get()->getResult();
+
+        $packtable = DB()->table('packages');
+        $data['pack'] = $packtable->where('package_id',$packId)->get()->getRow();
+
+        echo view('web/header',$data);
+        echo view('web/detail_mob',$data);
+        echo view('web/footer');
+    }
+
     public function get_started($id){
         $data['no_banner'] = 'on';
         $table = DB()->table('packages');
@@ -47,13 +61,13 @@ class Home extends BaseController
 
     public function action(){
 
-        $data['first_name'] = $this->request->getPost('first_name');
-        $data['last_name'] = $this->request->getPost('last_name');
-        $data['phone'] = $this->request->getPost('phone');
-        $data['email'] = $this->request->getPost('email');
-        $data['city'] = $this->request->getPost('city');
-        $data['postcode'] = $this->request->getPost('postcode');
-        $data['address'] = $this->request->getPost('address');
+//        $data['first_name'] = $this->request->getPost('first_name');
+//        $data['last_name'] = $this->request->getPost('last_name');
+//        $data['phone'] = $this->request->getPost('phone');
+//        $data['email'] = $this->request->getPost('email');
+//        $data['city'] = $this->request->getPost('city');
+//        $data['postcode'] = $this->request->getPost('postcode');
+//        $data['address'] = $this->request->getPost('address');
         $data['package_id'] = $this->request->getPost('package_id');
         $data['payment_method_id'] = $this->request->getPost('payment_method_id');
         $data['createdBy'] = '1';
@@ -84,12 +98,6 @@ class Home extends BaseController
 
 
         $this->validation->setRules([
-            'first_name' => ['label' => 'First Name', 'rules' => 'required'],
-            'last_name' => ['label' => 'Last Name', 'rules' => 'required'],
-            'phone' => ['label' => 'Phone', 'rules' => 'required'],
-            'email' => ['label' => 'Email', 'rules' => 'required'],
-            'city' => ['label' => 'City', 'rules' => 'required'],
-            'address' => ['label' => 'Address', 'rules' => 'required'],
             'payment_phone' => ['label' => 'Payment Phone', 'rules' => 'required'],
             'payment_transaction_id' => ['label' => 'Payment Transaction Id', 'rules' => 'required'],
         ]);
@@ -98,8 +106,6 @@ class Home extends BaseController
             $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">'. $this->validation->listErrors() .'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             return redirect()->to(site_url('Home/get_started/' . $data['package_id']));
         }else {
-
-
             $billingTab = DB()->table('billing');
             $billingTab->insert($data);
 

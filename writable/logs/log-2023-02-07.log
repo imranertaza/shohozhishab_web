@@ -1,0 +1,43 @@
+ERROR - 2023-02-07 05:40:37 --> mysqli_sql_exception: Unknown column 'password' in 'field list' in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Web\Dashboard.php(332): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Web\Dashboard->package_action()
+#6 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Web\Dashboard))
+#7 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\test\shohozhisab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-07 05:40:37 --> Unknown column 'password' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `shops` (`name`, `email`, `password`, `status`) VALUES (\'Test\', \'admin@gmail.com\', \'12345678\', \'1\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `shops` (`name`, `email`, `password`, `status`) VALUES (\'Test\', \'admin@gmail.com\', \'12345678\', \'1\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `shops` (`name`, `email`, `password`, `status`) VALUES (\'Test\', \'admin@gmail.com\', \'12345678\', \'1\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `shops` (`name`, `email`, `password`, `status`) VALUES (:name:, :email:, :password:, :status:)', [...], false)
+ 5 APPPATH\Controllers\Web\Dashboard.php(332): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Web\Dashboard->package_action()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Web\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-07 22:27:30 --> mysqli_sql_exception: Table 'shohozhishabci4.packages' doesn't exist in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Web\Dashboard.php(335): get_data_by_id('software_pack_i...', Object(CodeIgniter\Database\MySQLi\Builder), 'package_id', '1')
+#6 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Web\Dashboard->package_action()
+#7 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Web\Dashboard))
+#8 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\test\shohozhisab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-07 22:27:30 --> Call to a member function getRow() on bool
+in APPPATH\Helpers\Global_helper.php on line 22.
+ 1 APPPATH\Controllers\Web\Dashboard.php(335): get_data_by_id('software_pack_id', Object(CodeIgniter\Database\MySQLi\Builder), 'package_id', '1')
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Web\Dashboard->package_action()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Web\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

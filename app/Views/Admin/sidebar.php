@@ -8,7 +8,7 @@
                      alt="User Image">
             </div>
             <div class="pull-left info">
-                <p><?php echo newSession()->name; ?></p>
+                <p><?php echo newSession()->nameAd; ?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -48,6 +48,24 @@
 
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Invoice</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="<?php echo base_url('Admin/Invoice') ?>">
+                            <i class=" fa fa-tasks"></i> <span>List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-comments"></i>
                     <span>Subscribe</span>
                     <span class="pull-right-container">
@@ -57,6 +75,23 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="<?php echo base_url('Admin/Subscribe') ?>">
+                            <i class=" fa fa-tasks"></i> <span>List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Packages</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="<?php echo base_url('Admin/Package') ?>">
                             <i class=" fa fa-tasks"></i> <span>List</span>
                         </a>
                     </li>

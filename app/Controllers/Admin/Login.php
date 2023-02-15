@@ -17,8 +17,8 @@ class Login extends BaseController
     public function index()
     {
 
-        $isLoggedIn = $this->session->isLoggedIn;
-        if (!isset($isLoggedIn) || $isLoggedIn != TRUE) {
+        $isLoggedInWebAdmin = $this->session->isLoggedInWebAdmin;
+        if (!isset($isLoggedInWebAdmin) || $isLoggedInWebAdmin != TRUE) {
             print view('Admin/login');
         }else{
             return redirect()->to(site_url('Admin/Dashboard'));
@@ -58,10 +58,10 @@ class Login extends BaseController
 
 
 
-                $sessionArray = array('userId'=>$result->user_id,
-                    'name'=>$result->name,
-                    'user'=>$result,
-                    'isLoggedIn' => TRUE
+                $sessionArray = array('userIdAd'=>$result->user_id,
+                    'nameAd'=>$result->name,
+                    'userAd'=>$result,
+                    'isLoggedInWebAdmin' => TRUE
                 );
                 $this->session->set($sessionArray);
 
@@ -106,11 +106,10 @@ class Login extends BaseController
     public function logout()
     {
 
-        unset($_SESSION['userId']);
-        unset($_SESSION['shopId']);
-        unset($_SESSION['role']);
-        unset($_SESSION['name']);
-        unset($_SESSION['isLoggedIn']);
+        unset($_SESSION['userIdAd']);
+        unset($_SESSION['nameAd']);
+        unset($_SESSION['userAd']);
+        unset($_SESSION['isLoggedInWebAdmin']);
 
 //        $this->session->destroy();
         return redirect()->to('/');

@@ -23,9 +23,8 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        $isLoggedIn = $this->session->isLoggedIn;
-        $role_id = $this->session->role;
-        if (!isset($isLoggedIn) || $isLoggedIn != TRUE) {
+        $isLoggedInWebAdmin = $this->session->isLoggedInWebAdmin;
+        if (!isset($isLoggedInWebAdmin) || $isLoggedInWebAdmin != TRUE) {
             return redirect()->to(site_url('Admin/login'));
         }else {
 

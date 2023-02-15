@@ -1,0 +1,6 @@
+CRITICAL - 2023-02-09 05:27:17 --> Too few arguments to function App\Controllers\Home::get_started(), 0 passed in C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php on line 904 and exactly 1 expected
+in APPPATH\Controllers\Home.php on line 48.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->get_started()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

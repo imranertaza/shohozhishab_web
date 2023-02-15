@@ -59,7 +59,7 @@ class Login extends BaseController
 
 
 
-                $sessionArray = array('user_id'=>$result->user_id,
+                $sessionArray = array('user_id'=>$result->customer_id,
                     'user_name'=>$result->name,
                     'allUser'=>$result,
                     'isLoggedInWeb' => TRUE
@@ -78,7 +78,7 @@ class Login extends BaseController
     }
 
     private function loginMe($email,$password){
-        $table = DB()->table('users');
+        $table = DB()->table('customers');
         $user = $table->where('email',$email)->where('status','1')->get()->getRow();
 
         if(!empty($user)){
@@ -95,7 +95,7 @@ class Login extends BaseController
     public function logout()
     {
 
-        unset($_SESSION['user_id']);
+        unset($_SESSION['customer_id']);
         unset($_SESSION['user_name']);
         unset($_SESSION['allUser']);
         unset($_SESSION['isLoggedInWeb']);
@@ -136,7 +136,7 @@ class Login extends BaseController
 
             if ($this->checkDuplicate($data['email']) == true) {
 
-                $table = DB()->table('users');
+                $table = DB()->table('customers');
                 $table->insert($data);
 
                 $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert">Successfully register <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -149,7 +149,7 @@ class Login extends BaseController
     }
 
     private function checkDuplicate($email){
-        $table = DB()->table('users');
+        $table = DB()->table('customers');
         $user = $table->where('email',$email)->where('status','1')->countAllResults();
 
         if(empty($user)){

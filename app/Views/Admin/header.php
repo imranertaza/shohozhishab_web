@@ -66,7 +66,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?php echo base_url()?>/admin/uploads/schools/users_1591685336.jpg" class="img-circle" alt="User Image" width="25" height="25">
-                            <span class="hidden-xs"><?php echo newSession()->name;?> <i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                            <span class="hidden-xs"><?php echo newSession()->nameAd;?> <i class="fa fa-sign-out" aria-hidden="true"></i></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -75,7 +75,7 @@
 
                                 <p>
                                     <?php //echo profile_name();?>
-                                    <?php echo newSession()->name;?>
+                                    <?php echo newSession()->nameAd;?>
                                     <!--                                    <small>Member since Nov. 2012</small>-->
                                 </p>
                             </li>

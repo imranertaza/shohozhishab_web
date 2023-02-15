@@ -23,6 +23,7 @@
                 <a class="<?php echo ($menu_select == 'my_bill')?'active':'';?>" href="<?php echo base_url('my_bill') ?>"><img src="<?php echo base_url() ?>/images/icon-park-outline_bill.png" alt="" style="margin-top:-7px;"> আমার বিল</a>
                 <a class="<?php echo ($menu_select == 'tutorial')?'active':'';?>" href="<?php echo base_url('tutorial') ?>"><img src="<?php echo base_url() ?>/images/mdi_learn-outline.png" alt="" style="margin-top:-7px;"> টিউটোরিয়াল</a>
                 <a class="<?php echo ($menu_select == 'user_guide')?'active':'';?>" href="<?php echo base_url('user_guide') ?>"><img src="<?php echo base_url() ?>/images/ph_book-open.png" alt="" style="margin-top:-7px;"> উজার গাইড</a>
+                <a class="<?php echo ($menu_select == 'shop_create')?'active':'';?>" href="<?php echo base_url('shop_create') ?>"><img src="<?php echo base_url() ?>/images/bi_shop.png" alt="" style="margin-top:-7px;"> শপ তৈরি করুন</a>
             </div>
 
 
