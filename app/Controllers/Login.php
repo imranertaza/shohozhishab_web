@@ -18,9 +18,9 @@ class Login extends BaseController
         $isLoggedInWeb = $this->session->isLoggedInWeb;
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             $data['no_banner'] = 'on';
-            echo view('web/header',$data);
-            echo view('web/login');
-            echo view('web/footer');
+            echo view('Web/header',$data);
+            echo view('Web/login');
+            echo view('Web/footer');
         }else{
             return redirect()->to(site_url('Web/Dashboard'));
         }
@@ -108,9 +108,9 @@ class Login extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             $data['no_banner'] = 'on';
 
-            echo view('web/header', $data);
-            echo view('web/register');
-            echo view('web/footer');
+            echo view('Web/header', $data);
+            echo view('Web/register');
+            echo view('Web/footer');
         }else {
             return redirect()->to(site_url('/Web/Dashboard'));
         }

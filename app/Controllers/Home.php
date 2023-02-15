@@ -17,18 +17,18 @@ class Home extends BaseController
         $data['headerOn'] = 'on';
         $table = DB()->table('packages');
         $data['pack'] = $table->get()->getResult();
-        echo view('web/header',$data);
-        echo view('web/index',$data);
-        echo view('web/footer');
+        echo view('Web/header',$data);
+        echo view('Web/index',$data);
+        echo view('Web/footer');
     }
 
     public function detail(){
         $data['no_banner'] = 'on';
         $table = DB()->table('packages');
         $data['pack'] = $table->get()->getResult();
-        echo view('web/header',$data);
-        echo view('web/detail',$data);
-        echo view('web/footer');
+        echo view('Web/header',$data);
+        echo view('Web/detail',$data);
+        echo view('Web/footer');
     }
 
     public function detail_mob($packId){
@@ -40,9 +40,9 @@ class Home extends BaseController
         $packtable = DB()->table('packages');
         $data['pack'] = $packtable->where('package_id',$packId)->get()->getRow();
 
-        echo view('web/header',$data);
-        echo view('web/detail_mob',$data);
-        echo view('web/footer');
+        echo view('Web/header',$data);
+        echo view('Web/detail_mob',$data);
+        echo view('Web/footer');
     }
 
     public function get_started($id){
@@ -54,9 +54,9 @@ class Home extends BaseController
         $payment = $paymentTab->where('payment_method_id','1')->get()->getRow();
         $data['charge'] = $payment;
 
-        echo view('web/header',$data);
-        echo view('web/get_started',$data);
-        echo view('web/footer');
+        echo view('Web/header',$data);
+        echo view('Web/get_started',$data);
+        echo view('Web/footer');
     }
 
     public function action(){
