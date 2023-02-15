@@ -29,9 +29,9 @@ class Dashboard extends BaseController
         }else {
 
             $data['menu_select'] = 'dashboard';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/dashboard',$data);
             echo view('Web/footer_dashboard');
         }
@@ -47,9 +47,9 @@ class Dashboard extends BaseController
             $data['pack'] = $table->get()->getResult();
 
             $data['menu_select'] = 'package_list';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/package_list',$data);
             echo view('Web/footer_dashboard');
         }
@@ -77,9 +77,9 @@ class Dashboard extends BaseController
             //status change when expiry date over (end)
 
             $data['menu_select'] = 'my_package';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/my_package',$data);
             echo view('Web/footer_dashboard');
         }
@@ -95,9 +95,9 @@ class Dashboard extends BaseController
             $data['invoice'] = $table->get()->getResult();
 
             $data['menu_select'] = 'my_bill';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/my_bill',$data);
             echo view('Web/footer_dashboard');
         }
@@ -111,9 +111,9 @@ class Dashboard extends BaseController
 
 
             $data['menu_select'] = 'tutorial';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/tutorial',$data);
             echo view('Web/footer_dashboard');
         }
@@ -127,9 +127,9 @@ class Dashboard extends BaseController
 
 
             $data['menu_select'] = 'user_guide';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/user_guide',$data);
             echo view('Web/footer_dashboard');
         }
@@ -144,9 +144,9 @@ class Dashboard extends BaseController
             $table = DB()->table('customers');
             $data['pro'] = $table->where('customer_id',$userId)->get()->getRow();
             $data['menu_select'] = 'profile';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/profile',$data);
             echo view('Web/footer_dashboard');
         }
@@ -188,9 +188,9 @@ class Dashboard extends BaseController
             $data['shops'] = $table->get()->getResult();
 
             $data['menu_select'] = 'shop_create';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar',$data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar',$data);
             echo view('Web/shop_create',$data);
             echo view('Web/footer_dashboard');
         }
@@ -272,9 +272,9 @@ class Dashboard extends BaseController
             $data['pack'] = $tablePack->where('package_id', $package_id)->get()->getRow();
 
             $data['menu_select'] = 'user_guide';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar', $data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar', $data);
             echo view('Web/get_package', $data);
             echo view('Web/footer_dashboard');
         }
@@ -518,9 +518,9 @@ class Dashboard extends BaseController
             $data['pack'] = $tablePack->where('package_id', $data['orders']->package_id)->get()->getRow();
 
             $data['menu_select'] = 'my_package';
-            $data['top_mer'] = view('web/da_top_btn');
-            echo view('web/header_dashboard');
-            echo view('web/sidebar', $data);
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar', $data);
             echo view('Web/get_package_renue', $data);
             echo view('Web/footer_dashboard');
         }
