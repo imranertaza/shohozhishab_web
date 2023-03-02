@@ -82,8 +82,14 @@ src="https://www.facebook.com/tr?id=1206918250261510&ev=PageView&noscript=1"
                     <li><a class="nav-link" href="<?php echo $url_b;?>/#price">মূল্য</a></li>
                     <li><a class="nav-link" href="<?php echo $url_b;?>/#used">প্রায়শই ব্যবহারকারী</a></li>
                     <li><a class="nav-link" href="<?php echo $url_b;?>/#faq">প্রশ্নাবলী</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#contact2">যোগাযোগ</a></li> 
-                    
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#contact2">যোগাযোগ</a></li>
+
+                    <?php $isLoggedInWeb = newSession()->isLoggedInWeb;
+                    if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {?>
+                        <li><a class="nav-link btn nav-btn-log" href="#" data-toggle="modal" data-target="#myModal2" >Login</a></li>
+                    <?php }else{ ?>
+                        <li><a class="nav-link btn nav-btn-log" href="<?php echo  base_url('Web/Dashboard')?>"  >Dashboard</a></li>
+                    <?php } ?>
                     <li><a class="nav-link btn btn-head nav-btn" target="_blank" href="https://shohozhishab.com/shohoz_demo_template/">View Demo</a></li>
                 </ul>
             </div>
