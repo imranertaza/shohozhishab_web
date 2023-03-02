@@ -37,25 +37,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" type="text
 /javascript"></script>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1206918250261510');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1206918250261510&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<meta name="facebook-domain-verification" content="pnvo34gmlk1ljrtw56psotml8pri4b" />
-
 </head>
 <body class="app_version" data-spy="scroll" data-target="#navbarApp" data-offset="98">
 
@@ -77,14 +58,21 @@ src="https://www.facebook.com/tr?id=1206918250261510&ev=PageView&noscript=1"
             <div class="collapse navbar-collapse justify-content-end" id="navbarApp">
                 <ul class="navbar-nav">
                     <?php $url_b =  (!isset($headerOn))?base_url():'';?>
-                    <li><a class="nav-link active" href="<?php echo $url_b;?>/#home">হোম</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#about">আমাদের সম্পর্কে</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#need">বৈশিষ্ট্য</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#price">মূল্য</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#used">প্রায়শই ব্যবহারকারী</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#faq">প্রশ্নাবলী</a></li>
-                    <li><a class="nav-link" href="<?php echo $url_b;?>/#contact2">যোগাযোগ</a></li> 
-                    
+                    <li><a class="nav-link active" href="<?php echo $url_b;?>/#home" >হোম</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#about" >আমাদের সম্পর্কে</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#need" >বৈশিষ্ট্য</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#price" >মূল্য</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#used" >প্রায়শই ব্যবহারকারী</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#faq" >প্রশ্নাবলী</a></li>
+                    <li><a class="nav-link" href="<?php echo $url_b;?>/#contact2" >যোগাযোগ</a></li>
+
+
+                    <?php $isLoggedInWeb = newSession()->isLoggedInWeb;
+                        if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {?>
+                    <li><a class="nav-link btn nav-btn-log" href="#" data-toggle="modal" data-target="#myModal2" >Login</a></li>
+                    <?php }else{ ?>
+                            <li><a class="nav-link btn nav-btn-log" href="<?php echo  base_url('Web/Dashboard')?>"  >Dashboard</a></li>
+                    <?php } ?>
                     <li><a class="nav-link btn btn-head nav-btn" target="_blank" href="https://shohozhishab.com/shohoz_demo_template/">View Demo</a></li>
                 </ul>
             </div>
@@ -92,7 +80,6 @@ src="https://www.facebook.com/tr?id=1206918250261510&ev=PageView&noscript=1"
     </nav>
 </header>
 <div class="col-12 message" ><?php if (session()->getFlashdata('message') !== NULL) : echo session()->getFlashdata('message'); endif; ?></div>
-
 <?php if (!isset($no_banner)){ ?>
 <section id="home" class="cd-hero js-cd-hero bac-img"
          style="background-image: url('<?php echo base_url() ?>/uploads/slider-bg.svg');height: auto;background-position: center;background-repeat: no-repeat;background-size: cover;margin-top: 95px;">
@@ -104,14 +91,15 @@ src="https://www.facebook.com/tr?id=1206918250261510&ev=PageView&noscript=1"
                     <div class="carousel-item active">
 
                         <p class="slide-ti"><span class="color-text">ফ্রী</span> ব্যাবহার করুন  সফটওয়্যার</p>
-                        <p class="slide-text">সহজ হিসাব আপনাকে দিচ্ছে পুরো এক মাসের ফ্রি ট্রায়াল।</p>
+                        <p class="slide-text">সহজ হিসাব আপনাকে দিচ্ছে  পুরো এক মাসের ফ্রি ট্রায়েল</p>
                         <button class="btn btn-slide" href="javascript:void(0)"  data-toggle="modal"
                                 data-target="#contactModal">Free Trial</button>
 
                     </div>
                     <div class="carousel-item">
                         <p class="slide-ti">কাস্টম <span class="color-text">সফটওয়্যার</span></p>
-                        <p class="slide-text">আপনার ব্যবসায়ের ধরন অনুযায়ী আপনার পছন্দমত সফটওয়্যার পাবেন। আমরা আপনার সকল রিকয়ারমেন্ট এর উপর সফটওয়্যার তৈরি করতে প্রস্তুত।</p>
+                        <p class="slide-text">আপনার ব্যবসায়ের ধরন অনুযায়ী আপনার পছন্দমত সফটওয়্যার পাবেন। আমরা আপনার সকল
+                            রিকায়ারমেন্ট এর উপর সফটওয়্যার তৈরি করতে প্রস্তুত।</p>
                         <button class="btn btn-slide" href="javascript:void(0)"  data-toggle="modal"
                                 data-target="#contactModal">Contact Us</button>
                     </div>

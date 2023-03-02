@@ -4,11 +4,12 @@
             <div class="col-md-12">
                 <div class="subscribe-text">
                     <p class="sub-ti-1">ইমেইল সাবস্ক্রাইব</p>
-                    <p class="sub-text">আপনি চাইলে আমাদেরকে ইমেইল সাবস্ক্রাইব করে রাখতে পারেন যার মাধ্যমে আমরা মাঝে মাঝে আপনাকে আমাদের বিভিন্ন অফার সম্পর্কে ইমেইল করতে পারি।</p>
+                    <p class="sub-text">আপনিচাইলে আমাদেরকে ইমেইল সাবস্ক্রাইব করে রাখতে পারেন যার মাধ্যমে আমরা মাঝে মাঝে
+                        আপনাকে আমাদের বিভিন্ন অফার সম্পর্কে ইমেইল করতে পারি।</p>
                 </div>
 
                 <div class="subscribe-form">
-                    <form id="subscribe2" method="post">
+                    <form>
                         <input class="form-control" id="subscribe_email" name="email" placeholder="Email Address..."
                                required="" type="email">
                         <button type="submit" class="btn subscribe-btn">Subscribe</button>
@@ -138,7 +139,7 @@
 
             </div>
             <div class="modal-body">
-               <center> <p class="text-ti">আমাদের সাথে যোগাযোগ করুন <p></center>
+               <center> <p class="text-ti">আমাদরে সাথে যোগাযোগ করুন</p></center>
                 <a href="tel:01979776449"><p class="text"><img src="<?php echo base_url() ?>/uploads/material-symbols_call.png" alt=""> 01979776449</p></a>
                 <a href="tel:01925218713"><p class="text"><img src="<?php echo base_url() ?>/uploads/ant-design_whats-app-outlined.png" alt=""> 01925218713</p></a>
                 <a href="skype:earfaneartaza1"><p class="text"><img src="<?php echo base_url() ?>/uploads/ri_skype-fill.png" alt=""> Earfaneartaza1</p></a>
@@ -187,7 +188,7 @@
         <div class="modal-content">
             <div class="modal-header-lo">
                 <center><p class="log-mod-tit">সাইন ইন করুন</p></center>
-                <!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
                 <center>
                     <div class="hr"></div>
                 </center>
@@ -436,26 +437,6 @@
             type: "POST",
             url: "<?php echo site_url('Home/subscribe'); ?>",
             data: $('#subscribe').serialize(),
-            success: function (data) {
-                if (data == true) {
-                    $('.message').html('<div class="alert alert-success alert-dismissible" role="alert">Successfully subscribe <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    $("#exampleModal").modal('hide');
-                }
-
-                if (data == false) {
-                    $('.message').html('<div class="alert alert-danger alert-dismissible" role="alert">Please input valid email! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                }
-            }
-
-        });
-    });
-    
-    $("#subscribe2").submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo site_url('Home/subscribe'); ?>",
-            data: $('#subscribe2').serialize(),
             success: function (data) {
                 if (data == true) {
                     $('.message').html('<div class="alert alert-success alert-dismissible" role="alert">Successfully subscribe <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
