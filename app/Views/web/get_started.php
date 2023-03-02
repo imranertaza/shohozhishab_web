@@ -8,8 +8,6 @@
 
                     <div class="row mail-form">
 
-
-
                         <div class="col-12" style="margin-top: 20px;margin-bottom: 24px;">
                             <p class="mail-title">Your order</p>
                         </div>

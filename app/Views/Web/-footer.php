@@ -7,7 +7,6 @@
                     <p class="sub-text">আপনিচাইলে আমাদেরকে ইমেইল সাবস্ক্রাইব করে রাখতে পারেন যার মাধ্যমে আমরা মাঝে মাঝে
                         আপনাকে আমাদের বিভিন্ন অফার সম্পর্কে ইমেইল করতে পারি।</p>
                 </div>
-
                 <div class="subscribe-form">
                     <form>
                         <input class="form-control" id="subscribe_email" name="email" placeholder="Email Address..."

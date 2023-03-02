@@ -20,7 +20,6 @@
                                     <li><a class="" href="#" >video for sell </a></li>
                                 </ul>
                             </div>
-
                             <a class="" href="#" data-toggle="collapse" data-target="#demo2" > All video for sell <img src="<?php echo base_url() ?>/images/arrow-right.png" alt="" style="margin-top:-7px;"></a>
                             <div id="demo2" class="collapse">
                                 <ul>

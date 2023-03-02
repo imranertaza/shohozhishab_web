@@ -26,7 +26,6 @@
                         <td><?php if ($val->status == 'Inactive'){ ?><a href="<?php echo base_url()?>/Web/Dashboard/re_new/<?php echo $val->order_id;?>" class="btn demo-btn" style="border-radius: 20px;">Renew</a><?php }else{ ?> <button class="btn demo-btn" style="border-radius: 20px;">Shop</button><?php } ?></td>
                     </tr>
                 <?php } ?>
-
                 </tbody>
             </table>
         </div>

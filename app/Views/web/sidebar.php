@@ -26,7 +26,6 @@
                 <a class="<?php echo ($menu_select == 'shop_create')?'active':'';?>" href="<?php echo base_url('shop_create') ?>"><img src="<?php echo base_url() ?>/images/bi_shop.png" alt="" style="margin-top:-7px;"> শপ তৈরি করুন</a>
             </div>
 
-
         </div>
         <div class="col-12 da-div-pd-20 pro-log">
             <div class="sidebar">
