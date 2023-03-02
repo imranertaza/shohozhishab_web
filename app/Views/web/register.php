@@ -5,7 +5,6 @@
                 <p class="features-ti">সাইন আপ করুন</p>
             </div>
         </div><!-- end title -->
-
         <div class="row">
             <div class="col-6" style="padding: 25px 50px;">
                 <img src="<?php echo base_url() ?>/images/reg63330381.png" alt="" width="100%">

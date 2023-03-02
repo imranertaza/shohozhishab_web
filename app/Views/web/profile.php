@@ -16,9 +16,7 @@
                              <center> <img src="<?php echo base_url() ?>/images/log-pro.jpg" alt="" class="pro-img-pro"></center>
                             <button type="button" class="btn-upl">ছবি আপলোড করুন</button>
                         </div>
-
                         <div class="input">
-
                             <div class="col-auto">
                                 <label for="inputPassword6" class="col-form-label">পুরো নাম </label>
                                 <input type="text"  class="form-control" name="name" value="<?php echo $pro->name;?>" required>

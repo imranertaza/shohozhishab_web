@@ -31,7 +31,6 @@
                         <td><a class="btn demo-btn" onclick="updateShop(<?php echo $val->shop_id; ?>)" style="border-radius: 20px;color:#ffffff">এডিট করুন</a></td>
                     </tr>
                     <?php } ?>
-
                 </tbody>
             </table>
         </div>
