@@ -61,8 +61,9 @@ class Dashboard extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             return redirect()->to(site_url('/Login'));
         }else {
+            $userId = $this->session->user_id;
             $table = DB()->table('orders');
-            $data['orders'] = $table->get()->getResult();
+            $data['orders'] = $table->where('reg_user_id',$userId)->get()->getResult();
 
             //status change when expiry date over (start)
             foreach ($data['orders'] as $val){
@@ -91,8 +92,9 @@ class Dashboard extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             return redirect()->to(site_url('/Login'));
         }else {
+            $userId = $this->session->user_id;
             $table = DB()->table('invoice');
-            $data['invoice'] = $table->get()->getResult();
+            $data['invoice'] = $table->where('reg_user_id',$userId)->get()->getResult();
 
             $data['menu_select'] = 'my_bill';
             $data['top_mer'] = view('Web/da_top_btn');
@@ -213,8 +215,9 @@ class Dashboard extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             return redirect()->to(site_url('/Login'));
         }else {
+            $userId = $this->session->user_id;
             $table = DB()->table('shops');
-            $data['shops'] = $table->get()->getResult();
+            $data['shops'] = $table->where('reg_user_id',$userId)->get()->getResult();
 
             $data['menu_select'] = 'shop_create';
             $data['top_mer'] = view('Web/da_top_btn');
@@ -226,7 +229,9 @@ class Dashboard extends BaseController
     }
 
     public function shop_create_action(){
+        $userId = $this->session->user_id;
         $data['shopName'] = $this->request->getPost('shopName');
+        $data['reg_user_id'] = $userId;
         $data['email'] = $this->request->getPost('email');
         $data['password'] = $this->request->getPost('password');
         $data['createdBy'] = '1';
@@ -294,8 +299,9 @@ class Dashboard extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             return redirect()->to(site_url('/Login'));
         }else {
+            $userId = $this->session->user_id;
             $table = DB()->table('shops');
-            $data['shops'] = $table->get()->getResult();
+            $data['shops'] = $table->where('reg_user_id',$userId)->get()->getResult();
 
             $tablePack = DB()->table('packages');
             $data['pack'] = $tablePack->where('package_id', $package_id)->get()->getRow();
@@ -311,7 +317,9 @@ class Dashboard extends BaseController
 
     public function ajax_shop_action(){
         $package_id = $this->request->getPost('package_id');
+        $userId = $this->session->user_id;
         $data['shopName'] = $this->request->getPost('shopName');
+        $data['reg_user_id'] = $userId;
         $data['email'] = $this->request->getPost('email');
         $data['password'] = $this->request->getPost('password');
         $data['createdBy'] = '1';
@@ -363,6 +371,7 @@ class Dashboard extends BaseController
             $pacPrice = get_data_by_id('price','packages','package_id',$data['package_id']);
             $pacInstla = get_data_by_id('installation_fee','packages','package_id',$data['package_id']);
             $invData['order_id'] = $order_id;
+            $invData['reg_user_id'] = $this->session->user_id;
             $invData['package_id'] = $data['package_id'];
             $invData['amount_original'] = $pacPrice + $pacInstla;
             $invData['payment_method_id'] = 0;
