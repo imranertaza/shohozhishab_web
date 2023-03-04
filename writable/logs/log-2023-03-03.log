@@ -1,0 +1,180 @@
+ERROR - 2023-03-03 22:33:00 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', 'password', 'shohozhishab_we...', 3306, '', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Home.php(19): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using ****: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Home.php(19): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2023-03-03 22:33:00 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using ****: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `packages`', [], false)
+ 3 APPPATH\Controllers\Home.php(19): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-03 23:50:13 --> Argument 1 passed to CodeIgniter\Database\Database::load() must be of the type array, string given, called in C:\xampp\htdocs\test\shohozhisab\system\Database\Config.php on line 78
+in SYSTEMPATH\Database\Database.php on line 42.
+ 1 SYSTEMPATH\Database\Config.php(78): CodeIgniter\Database\Database->load('custom', 'custom')
+ 2 APPPATH\Helpers\Global_helper.php(103): CodeIgniter\Database\Config::connect('custom')
+ 3 APPPATH\Views\Admin\Package\update.php(66): get_package_other_db('2')
+ 4 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Admin\\Package\\update.php')
+ 5 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/update', [], true)
+ 7 APPPATH\Controllers\Admin\Package.php(102): view('Admin/Package/update', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-03-03 23:50:33 --> mysqli_sql_exception: Unknown database 'shohozhishab_ci4' in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(292): mysqli->query('use shohozhisha...', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('use shohozhisha...')
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('use shohozhisha...')
+#3 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(105): CodeIgniter\Database\BaseConnection->query('use shohozhisha...')
+#4 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#5 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#8 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#9 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2023-03-03 23:50:33 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', 'password', 'shohozhishab_ci...', 3306, '', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#9 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#12 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using ****: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#5 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#8 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#9 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-03-03 23:50:33 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using ****: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `package`', [], false)
+ 3 APPPATH\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Views\Admin\Package\update.php(66): get_package_other_db('2')
+ 5 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Admin\\Package\\update.php')
+ 6 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/update', [], true)
+ 8 APPPATH\Controllers\Admin\Package.php(102): view('Admin/Package/update', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+10 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-03-03 23:50:38 --> mysqli_sql_exception: Unknown database 'shohozhishab_ci4' in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(292): mysqli->query('use shohozhisha...', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('use shohozhisha...')
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('use shohozhisha...')
+#3 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(105): CodeIgniter\Database\BaseConnection->query('use shohozhisha...')
+#4 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#5 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#8 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#9 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2023-03-03 23:50:38 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', 'password', 'shohozhishab_ci...', 3306, '', 0)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#9 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#12 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using ****: YES) in C:\xampp\htdocs\test\shohozhisab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\test\shohozhisab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\test\shohozhisab\app\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\test\shohozhisab\app\Views\Admin\Package\update.php(66): get_package_other_db('2')
+#5 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(213): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\test\shohozhisab\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\test\shohozhisab\system\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/u...', Array, true)
+#8 C:\xampp\htdocs\test\shohozhisab\app\Controllers\Admin\Package.php(102): view('Admin/Package/u...', Array)
+#9 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+#10 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+#11 C:\xampp\htdocs\test\shohozhisab\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\test\shohozhisab\public_html\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-03-03 23:50:38 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using ****: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `package`', [], false)
+ 3 APPPATH\Helpers\Global_helper.php(107): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Views\Admin\Package\update.php(66): get_package_other_db('2')
+ 5 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Admin\\Package\\update.php')
+ 6 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('Admin/Package/update', [], true)
+ 8 APPPATH\Controllers\Admin\Package.php(102): view('Admin/Package/update', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Admin\Package->update('1')
+10 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Package))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

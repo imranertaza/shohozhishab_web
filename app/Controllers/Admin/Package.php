@@ -104,6 +104,39 @@ class Package extends BaseController
         }
     }
 
+    public function update_action(){
+        $userId = $this->session->userIdAd;
+
+        $package_id = $this->request->getPost('package_id');
+        $data['name'] = $this->request->getPost('name');
+        $data['price'] = $this->request->getPost('price');
+        $data['subscription_type'] = $this->request->getPost('subscription_type');
+        $data['installation_fee'] = $this->request->getPost('installation_fee');
+        $data['software_pack_id'] = $this->request->getPost('software_pack_id');
+        $data['updatedBy'] = $userId;
+
+        $this->validation->setRules([
+            'name' => ['label' => 'Name', 'rules' => 'required|'],
+            'price' => ['label' => 'Price', 'rules' => 'required|is_natural_no_zero|max_length[32]'],
+            'subscription_type' => ['label' => 'Subscription Type', 'rules' => 'required'],
+            'installation_fee' => ['label' => 'Installation Fee', 'rules' => 'required'],
+            'software_pack_id' => ['label' => 'Software Pack', 'rules' => 'required'],
+        ]);
+
+        if ($this->validation->run($data) == FALSE) {
+            $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            return redirect()->to(site_url('Admin/Package/update/'.$package_id));
+        } else {
+
+            $table = DB()->table('packages');
+            $table->where('package_id',$package_id)->update($data);
+
+            $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert"> Update successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            return redirect()->to(site_url('Admin/Package/update/'.$package_id));
+
+        }
+    }
+
     public function delete($id){
         $orderTab = DB()->table('orders');
         $orderCheck = $orderTab->where('package_id',$id)->countAllResults();

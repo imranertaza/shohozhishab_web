@@ -56,7 +56,6 @@
                                     <td><?php echo statusView($row->status); ?> </td>
 
                                     <td width="160px">
-                                        <a href="<?php echo base_url()?>/Admin/Package/view/<?php echo $row->package_id;?>"   class="btn btn-xs btn-primary">View</a>
                                         <a href="<?php echo base_url()?>/Admin/Package/update/<?php echo $row->package_id;?>"   class="btn btn-xs btn-info">Update</a>
                                         <a href="<?php echo base_url()?>/Admin/Package/delete/<?php echo $row->package_id;?>"   class="btn btn-xs btn-danger">Delete</a>
                                     </td>

@@ -179,6 +179,35 @@ class Dashboard extends BaseController
         }
     }
 
+    public function profile_update(){
+
+        $userId = $this->session->user_id;
+        $data['customer_id'] = $this->request->getPost('customer_id');
+        $data['name'] = $this->request->getPost('name');
+        $data['mobile'] = $this->request->getPost('mobile');
+        $data['email'] = $this->request->getPost('email');
+
+        $this->validation->setRules([
+            'name' => ['label' => 'name', 'rules' => 'required'],
+            'mobile' => ['label' => 'mobile', 'rules' => 'required|is_natural_no_zero|max_length[12]'],
+            'email' => ['label' => 'email', 'rules' => 'required|valid_email'],
+        ]);
+
+        if ($this->validation->run($data) == FALSE) {
+            $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            return redirect()->to(site_url('Web/Dashboard/profile'));
+        }else {
+
+            $table = DB()->table('customers');
+            $table->where('customer_id', $data['customer_id'])->update($data);
+
+
+
+            $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Update successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            return redirect()->to(site_url('Web/Dashboard/profile'));
+        }
+    }
+
     public function shop_create(){
         $isLoggedInWeb = $this->session->isLoggedInWeb;
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
