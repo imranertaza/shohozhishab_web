@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'password',
         'database' => 'shohozhishab_web',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
@@ -54,8 +54,8 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
-        'database' => 'shohozhishabci4',
+        'password' => 'password',
+        'database' => 'shohozhishab_ci4',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -106,6 +106,14 @@ class Database extends Config
         // we don't overwrite live data on accident.
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
+            $this->custom = 'custom';
+        }
+        if (ENVIRONMENT === 'development') {
+            $this->defaultGroup = 'default';
+            $this->custom = 'custom';
+        }
+        if (ENVIRONMENT === 'production') {
+            $this->defaultGroup = 'default';
             $this->custom = 'custom';
         }
     }

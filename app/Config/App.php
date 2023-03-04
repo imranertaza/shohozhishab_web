@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://test.dns/shohozhisab/public_html/';
+    public $baseURL = 'http://shohozhishab.web/';
 
     /**
      * --------------------------------------------------------------------------
