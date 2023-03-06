@@ -86,6 +86,7 @@
     font-size: 40px;
     line-height: 65px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .features-text{
     font-family: 'Hind Siliguri';
@@ -107,7 +108,7 @@
     margin-top: 40px;
 }
 .btn-features{
-    background: #f5f5f5;
+    background: #ffffff;
     box-shadow: 0px 4px 26px rgba(58, 58, 58, 0.06);
     border-radius: 8px;
     color: #000000 !important;
@@ -152,6 +153,7 @@
     font-size: 40px;
     line-height: 44px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .ul-soft li::before {
     content: "\2022";
@@ -177,6 +179,7 @@
     font-size: 40px;
     line-height: 65px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .features2-ti-text{
     font-family: 'Hind Siliguri';
@@ -224,6 +227,7 @@
     font-size: 40px;
     line-height: 65px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .install-text{
     font-family: 'Hind Siliguri';
@@ -248,6 +252,7 @@
     font-size: 40px;
     line-height: 65px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .price-text{
     font-family: 'Hind Siliguri';
@@ -265,6 +270,7 @@
     padding: 20px;
     margin: 10px;
     border-radius: 15px;
+    background-color:#ffffff;
 }
 .detail-pack .price-box{
     margin: 40px;
@@ -441,6 +447,7 @@
     font-size: 40px;
     line-height: 50px;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .used-text{
     font-family: 'Hind Siliguri';
@@ -473,6 +480,7 @@
     line-height: 50px;
     text-align: center;
     color: #1D1D1B;
+    margin-top:30px;
 }
 .client-text{
     font-family: 'Hind Siliguri';
@@ -514,6 +522,7 @@
     line-height: 65px;
     text-align: center;
     color: #2E2E2E;
+    margin-top:30px;
 }
 .faq-ti{
     font-family: 'Hind Siliguri';

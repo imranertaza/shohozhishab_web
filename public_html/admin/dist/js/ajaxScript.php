@@ -61,6 +61,18 @@
             }
         });
     }
+
+    function orderStatus(val,orderId){
+        $.ajax({
+            url: '<?php echo base_url()?>/Admin/Order/orderStatusChenge',
+            type: 'post',
+            data: {status:val,orderId:orderId},
+            success: function(response){
+                $("#message").html('<div class="alert alert-success alert-dismissible" role="alert">Subscribe update successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            }
+        });
+    }
+
 </script>
 
 

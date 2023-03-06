@@ -1,10 +1,10 @@
 <div class="content-wrapper" id="viewpage">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1> Order  <small>Order List</small></h1>
+        <h1> Payment  <small>Payment List</small></h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Order</a></li>
-            <li class="active">Order</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Payment</a></li>
+            <li class="active">Payment</li>
         </ol>
     </section>
 
@@ -19,9 +19,10 @@
                     <div class="box-header">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h3 class="box-title">Order List</h3>
+                                <h3 class="box-title">Payment List</h3>
                             </div>
                             <div class="col-lg-3">
+                                <a href="<?php echo base_url()?>/Admin/Payment/create/"   class="btn btn-xs btn-primary btn-block ">Create</a>
                             </div>
                             <div class="col-lg-12" style="margin-top: 20px;" id="message">
                                 <?php if (session()->getFlashdata('message') !== NULL) : echo session()->getFlashdata('message'); endif; ?>
@@ -37,29 +38,26 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
-                                <th>Shop</th>
-                                <th>Package</th>
+                                <th>phone</th>
+                                <th>account_type</th>
+                                <th>charge</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $start=1; foreach ($orders as $row) { ?>
+                            <?php $start=1; foreach ($payment as $row) { ?>
                                 <tr>
                                     <td width="80px"><?php echo $start++ ?></td>
-                                    <td><?php echo get_data_by_id('name', 'customers', 'customer_id', $row->reg_user_id) ?></td>
-                                    <td><?php echo get_data_by_id('shopName', 'shops', 'shop_id', $row->shop_id) ?></td>
-                                    <td><?php echo get_data_by_id('name', 'packages', 'package_id', $row->package_id) ?></td>
-                                    <td width="90">
-                                        <?php if ($row->status == 'Active'){ ?>
-                                        <?php echo $row->status; }else{ ?>
-                                            <select name="status" id="status" onchange="orderStatus(this.value ,'<?php echo $row->order_id;?>')" >
-                                                <option value="Active" <?php echo ($row->status == 'Active')?'selected':'';?> >Active</option>
-                                                <option value="Inactive" <?php echo ($row->status == 'Inactive')?'selected':'';?> >Inactive</option>
-                                                <option value="Pending" <?php echo ($row->status == 'Pending')?'selected':'';?> >Pending</option>
-                                                <option value="Canceled" <?php echo ($row->status == 'Canceled')?'selected':'';?> >Canceled</option>
-                                            </select>
-                                        <?php } ?>
+                                    <td><?php echo $row->name; ?></td>
+                                    <td><?php echo $row->phone; ?></td>
+                                    <td><?php echo $row->charge; ?></td>
+                                    <td><?php echo $row->status; ?></td>
+                                    <td><?php echo statusView($row->status); ?> </td>
 
+                                    <td width="160px">
+                                        <a href="<?php echo base_url()?>/Admin/Package/update/<?php echo $row->package_id;?>"   class="btn btn-xs btn-info">Update</a>
+                                        <a href="<?php echo base_url()?>/Admin/Package/delete/<?php echo $row->package_id;?>"   class="btn btn-xs btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             <?php } ?>

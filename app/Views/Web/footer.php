@@ -400,16 +400,34 @@
 
     window.onscroll = function () {
         scrollFunction()
+        scrollFunction2()
     };
 
     function scrollFunction() {
         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-
             $(".back-w").css('display', 'block');
         } else {
             // $(".back-w").removeClass( 'sticky-top-price');
             $(".back-w").css('display', 'none');
         }
+
+    }
+    function scrollFunction2() {
+        // window.scrollBy(3641, 3641);
+        // alert(window.scrollX + window.scrollY);
+        // if (window.scrollTo(2000, 100)){
+        //     alert('bottom');
+        // }
+        // if (document.body.scrollBottom >= 3641 || document.documentElement.scrollBottom >= 3641) {
+        //     // $(".back-w").css('display', 'block');
+        //     // $(".back-w").css('display', 'none');
+        //     // alert('top');
+        //     alert('bottom');
+        // }else{
+        //     // alert('bottom');
+        // }
+        // window.scrollBy(0,2000000);
+
     }
 
     function charge_get(pay_id) {

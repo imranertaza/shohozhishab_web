@@ -7,6 +7,7 @@
             <div class="col-lg-5 col-md-6">
                 <p class="about-ti">আমাদের <span class="color-text">সম্পর্কে</span></p>
                 <p class="about-text">সহজ হিসাব একটি ব্যবসা প্রতিষ্ঠানের ডিজিটালাইজ করতে যে সমস্ত সফটওয়্যার বা ডিভাইস প্রয়োজন হয় সে সমস্ত সফটওয়্যার এবং ডিভাইস আমরা বাজার থেকে কম মূল্যে দিয়ে থাকি, আপনার প্রতিষ্ঠানকে ডিজিটাল করতে আমাদের সাথে যোগাযোগ করুন। </p>
+
             </div>
         </div>
 
@@ -161,7 +162,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12">
                 <img src="<?php echo base_url() ?>/uploads/about-02 1.svg" alt="about" class="w-100">
             </div>
-            <div class="col-md-12 col-lg-6 col-sm-12" style="margin-top: 145px;">
+            <div class="col-md-12 col-lg-6 col-sm-12" style="margin-top: 100px;">
                 <ul class="ul-soft">
                     <li class="li-text">আপনার প্রতিষ্ঠানের অনেকগুলো কম্পিউটার একটিমাত্র সফটওয়্যার দ্বারা পরিচালনা করতে
                         পারবেন।
@@ -378,8 +379,7 @@
         <div class="row text-center">
             <div class="col-12">
                 <p class="price-ti">সহজ হিসাব <span class="color-text">এর মূল্য</span></p>
-                <p class="price-text">সহজ হিসাবের সেবা পেতে আপনাকে এককালীন, মাসিক এবং বাৎসরিক মুল্য পরিশোধ করে এই সেবা
-                    কিনতে হবে । সহজ হিসাব স্বল্প মুল্যে ও সহজলভ্য একটি প্রিমিয়াম সার্ভিস।</p>
+                <p class="price-text">সহজ হিসাবের সেবা পেতে আপনাকে এককালীন, মাসিক এবং বাৎসরিক মুল্য পরিশোধ করে <br> এই সেবা কিনতে হবে । সহজ হিসাব স্বল্প মুল্যে ও সহজলভ্য একটি প্রিমিয়াম সার্ভিস।</p>
             </div>
         </div>
         <div class="row">
@@ -449,8 +449,8 @@
 
                 </div>
             </div>
-            <div class="col-md-12 col-lg-6 col-sm-12">
-                <img src="<?php echo base_url() ?>/uploads/Group 2040.svg" alt="" class="w-100">
+            <div class="col-md-12 col-lg-6 col-sm-12 " >
+                <img src="<?php echo base_url() ?>/uploads/Group 2040.svg" alt="" class="w-100 mt-3">
             </div>
         </div>
     </div>
@@ -562,7 +562,7 @@
 <div id="faq" class="section" style="background-color:#F9F9FF;padding-top: 0px !important;">
     <div class="container">
         <div class="row">
-            <div class="col-12" style="margin-bottom: 100px; margin-top: 60px;">
+            <div class="col-12" style="margin-bottom: 100px; margin-top: 40px;">
                 <p class="faq-ti">প্রশ্ন <span class="color-text">উত্তর</span></p>
             </div>
         </div>

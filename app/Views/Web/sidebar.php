@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-8 da-pro-con">
                 <p class="wel">Welcome</p>
-                <p class="wel-tex">Murad hossion </p>
+                <p class="wel-tex text-capitalize "><?php echo newSession()->allUser->name; ?> </p>
             </div>
             </div>
         </div>

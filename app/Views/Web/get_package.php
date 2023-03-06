@@ -1,5 +1,5 @@
 <div id="home" class="col-9 da-content">
-    <form method="post" action="<?php echo base_url()?>/Web/Dashboard/package_action">
+    <form method="post" action="<?php echo base_url()?>/Web/Dashboard/package_action" >
         <div class="row">
             <div class="col-12 da-div-pd-20">
                 <?php echo $top_mer; ?>
@@ -39,6 +39,18 @@
                             <p><?php echo round($pack->installation_fee + $pack->price) ?>tk</p>
                         </div>
                         <input type="hidden" class="form-control" name="package_id" placeholder="package_id" value="<?php echo $pack->package_id ?>" required>
+
+                        <div class="payment">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" checked type="radio" name="payment" id="aamarpay" value="aamarpay">
+                                <label class="form-check-label" for="aamarpay">aamarpay (bkash, nagad, visa, mastercard)</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="payment" id="direct_payment" value="direct_payment">
+                                <label class="form-check-label" for="direct_payment">Direct Payment</label>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-info" style="float: right;">Pay</button>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
                         <td><?php echo invoiceDateFormat($val->createdDtm);?></td>
                         <td><?php echo $val->amount_original;?>tk</td>
                         <td>
-                            <?php if ($val->amount_original == 'Unpaid'){ ?>
+                            <?php if ($val->pay_status == 'Unpaid'){ ?>
                             <button class="btn demo-btn" style="border-radius: 20px;">UNPAID</button>
                             <?php }else{ ?>PAID<?php } ?>
                         </td>

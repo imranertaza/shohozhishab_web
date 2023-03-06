@@ -98,6 +98,12 @@
                 </ul>
             </li>
 
+<!--            <li class="treeview">-->
+<!--                <a href="--><?php //echo base_url('Admin/Payment') ?><!--">-->
+<!--                    <i class="fa fa-money"></i> <span>Payment</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
 
         </ul>
     </section>
