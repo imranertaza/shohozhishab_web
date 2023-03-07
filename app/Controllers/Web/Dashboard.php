@@ -253,12 +253,16 @@ class Dashboard extends BaseController
             $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             return redirect()->to(site_url('Web/Dashboard/shop_create'));
         } else {
+            if ($this->email_check($data['email']) == true) {
+                $table = DB()->table('shops');
+                $table->insert($data);
 
-            $table = DB()->table('shops');
-            $table->insert($data);
-
-            $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Add successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            return redirect()->to(site_url('Web/Dashboard/shop_create'));
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Add successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/shop_create'));
+            }else{
+                $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">This email already exists<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/shop_create'));
+            }
         }
     }
 
@@ -294,12 +298,16 @@ class Dashboard extends BaseController
             $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             return redirect()->to(site_url('Web/Dashboard/shop_create'));
         } else {
+            if ($this->email_check_update($data['email'],$data['shop_id']) == true) {
+                $table = DB()->table('shops');
+                $table->where('shop_id', $data['shop_id'])->update($data);
 
-            $table = DB()->table('shops');
-            $table->where('shop_id', $data['shop_id'])->update($data);
-
-            $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Update successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            return redirect()->to(site_url('Web/Dashboard/shop_create'));
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Update successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/shop_create'));
+            }else{
+                $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">This email already exists<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/shop_create'));
+            }
         }
     }
 
@@ -345,12 +353,16 @@ class Dashboard extends BaseController
             $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             return redirect()->to(site_url('Web/Dashboard/get_started/' . $package_id));
         } else {
+            if ($this->email_check($data['email']) == true) {
+                $table = DB()->table('shops');
+                $table->insert($data);
 
-            $table = DB()->table('shops');
-            $table->insert($data);
-
-            $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Add successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            return redirect()->to(site_url('Web/Dashboard/get_started/' . $package_id));
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Add successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/get_started/' . $package_id));
+            }else{
+                $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">This email already exists<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/get_started/' . $package_id));
+            }
         }
     }
 
@@ -705,5 +717,22 @@ class Dashboard extends BaseController
         }
     }
 
-
+    private function email_check($email){
+        $table = DB()->table('shops');
+        $shop = $table->where('email',$email)->get()->getRow();
+        if (empty($shop)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private function email_check_update($email,$shopId){
+        $table = DB()->table('shops');
+        $shop = $table->where('email',$email)->where('shop_id !=',$shopId)->get()->getRow();
+        if (empty($shop)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
