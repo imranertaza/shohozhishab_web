@@ -190,4 +190,19 @@ function shop_order_check_and_view($shop_id){
     return $result;
 }
 
+function notice(){
+    $table = DB()->table('notice');
+    $result = $table->get()->getResult();
 
+    return $result;
+}
+
+function title_by_value($title){
+    $table = DB()->table('genarel_settings');
+    $query = $table->where('title', $title)->get()->getLastRow();
+    $result ='';
+    if (!empty($query)){
+        $result = $query->value;
+    }
+    return $result;
+}

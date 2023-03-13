@@ -167,8 +167,8 @@
                 <div class="row">
                     <div class="col-md-12 col-xl-12 col-sm-12"  style="padding: 0px 74px 40px 74px; text-align: center;">
                         <h3>আপনার শপে লগ ইন করতে নিচের লগইন বাটনে ক্লিক করুন।</h3>
-                        <br><a href="http://application.test.shohozhishab.com/" target="_blank" class="btn demo-btn" style="width:100%; color:#ffffff;">Login</a>
-                        <br><a href="#" >http://application.test.shohozhishab.com/</a>
+                        <br><a href="<?php echo title_by_value('shohozhisab_app_url');?>" target="_blank" class="btn demo-btn" style="width:100%; color:#ffffff;">Login</a>
+                        <br><a href="#" ><?php echo title_by_value('shohozhisab_app_url');?></a>
                         <br><br>
                         <div id="shopDetailData"></div>
 <!--                        <p>2023-03-16</p>-->

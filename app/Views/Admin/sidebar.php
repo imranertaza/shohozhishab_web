@@ -109,6 +109,18 @@
                 </a>
             </li>
 
+            <li>
+                <a href="<?php echo base_url('Admin/Notice') ?>">
+                    <i class="fa fa-list"></i> <span>Notice</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo base_url('Admin/General_settings') ?>">
+                    <i class="fa fa-gear"></i> <span>General settings</span>
+                </a>
+            </li>
+
 
         </ul>
     </section>

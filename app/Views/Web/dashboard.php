@@ -7,7 +7,11 @@
             <div class="row cl-bor" >
                 <div class="col-md-9 col-sm-12">
                     <p class="no-ti">নোটিশ</p>
-                    <p class="no-tex">এই মুহুর্তে আপনার জন্য কোন নোটিশ নাই.....</p>
+                    <?php if (!empty($notice->description)){ ?>
+                    <p class="no-tex"><?php echo $notice->description;?></p>
+                    <?php }else{ ?>
+                        <p class="no-tex">এই মুহুর্তে আপনার জন্য কোন নোটিশ নাই.....</p>
+                    <?php }?>
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <img src="<?php echo base_url()?>/images/da-2392.png" alt="">

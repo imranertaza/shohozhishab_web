@@ -27,6 +27,8 @@ class Dashboard extends BaseController
         if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
             return redirect()->to(site_url('/Login'));
         } else {
+            $table = DB()->table('notice');
+            $data['notice'] = $table->get()->getLastRow();
 
             $data['menu_select'] = 'dashboard';
             $data['top_mer'] = view('Web/da_top_btn');
