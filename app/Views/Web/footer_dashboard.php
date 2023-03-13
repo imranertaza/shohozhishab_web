@@ -134,22 +134,46 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="input-group mb-3 log-in" >
-                                <select class="form-control" name="status" id="status">
-                                    <option value="">Please select</option>
-                                    <?php echo globalStatus('');?>
-                                </select>
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="basic-addon2">
-                                        <img src="<?php echo base_url() ?>/images/rounded.png" alt="" width="17" >
-                                    </span>
-                                </div>
-                            </div>
+<!--                            <div class="input-group mb-3 log-in" >-->
+<!--                                <select class="form-control" name="status" id="status">-->
+<!--                                    <option value="">Please select</option>-->
+<!--                                    --><?php //echo globalStatus('');?>
+<!--                                </select>-->
+<!--                                <div class="input-group-append">-->
+<!--                                    <span class="input-group-text" id="basic-addon2">-->
+<!--                                        <img src="--><?php //echo base_url() ?><!--/images/rounded.png" alt="" width="17" >-->
+<!--                                    </span>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="input-group mb-3 " >
                                 <input type="hidden" name="shop_id" id="shop_id" required>
                                 <button class="btn btn-m-sig" >শপ আপডেট করুন</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="shopDetail" tabindex="-1" role="dialog" aria-labelledby="shopDetail">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content shop_create_mod">
+            <div class="modal-header-lo" style="padding:20px; ">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="<?php echo base_url() ?>/images/akar-icons_cross.png"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12 col-sm-12"  style="padding: 0px 74px 40px 74px; text-align: center;">
+                        <h3>আপনার শপে লগ ইন করতে নিচের লগইন বাটনে ক্লিক করুন।</h3>
+                        <br><a href="http://application.test.shohozhishab.com/" target="_blank" class="btn demo-btn" style="width:100%; color:#ffffff;">Login</a>
+                        <br><a href="#" >http://application.test.shohozhishab.com/</a>
+                        <br><br>
+                        <div id="shopDetailData"></div>
+<!--                        <p>2023-03-16</p>-->
+
+
                     </div>
                 </div>
             </div>
@@ -362,6 +386,21 @@
 
     }
 
+    function shopDetailView(shop_id){
+        $('#shopDetail').modal('show');
+
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('Web/Dashboard/shopDetail')?>",
+            data: {shopId:shop_id },
+            success: function (data) {
+                $("#shopDetailData").html(data);
+
+                // $("#exampleModal").modal('hide');
+            }
+        });
+    }
+
     function pack_detail(id){
         $.ajax({
             type: "POST",
@@ -373,6 +412,25 @@
                 // alert(data);
             }
         });
+    }
+
+    function packPrice(id){
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('Web/Dashboard/pack_data_view')?>",
+            data: {package_id:id },
+            dataType: 'text',
+            success: function (data) {
+                $("#packData").html(data);
+            }
+        });
+    }
+
+    function buttonShow(package_id,shoppackageId){
+        $("#btnPay").show();
+        if (package_id == shoppackageId){
+            $("#btnPay").hide();
+        }
     }
 
 

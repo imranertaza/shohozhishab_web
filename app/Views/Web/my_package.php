@@ -12,7 +12,7 @@
                     <th>প্যকেজ এর নাম</th>
                     <th>মেয়াদ শেষ হওয়ার তারিখ</th>
                     <th>স্ট্যাটাস</th>
-                    <th>প্রক্রিয়া</th>
+<!--                    <th>প্রক্রিয়া</th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -23,7 +23,9 @@
                         <td><?php echo get_data_by_id('name','packages','package_id',$val->package_id);?></td>
                         <td><?php echo package_expiry($s_shop_id);?></td>
                         <td><?php echo $val->status;?></td>
-                        <td><?php if ($val->status == 'Inactive'){ ?><a href="<?php echo base_url()?>/Web/Dashboard/re_new/<?php echo $val->order_id;?>" class="btn demo-btn" style="border-radius: 20px;">Renew</a><?php }else{ ?> <button class="btn demo-btn" style="border-radius: 20px;">Shop</button><?php } ?></td>
+<!--                        <td>-->
+<!--                            <a href="--><?php //echo base_url()?><!--/Web/Dashboard/change_package/--><?php //echo $val->order_id;?><!--" class="btn demo-btn" style="border-radius: 20px;">Invoice</a>                            -->
+<!--                        </td>-->
                     </tr>
                 <?php } ?>
                 </tbody>

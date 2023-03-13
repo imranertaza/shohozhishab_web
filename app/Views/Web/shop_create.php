@@ -15,8 +15,8 @@
                 <thead>
                 <tr>
                     <th>সপ এর নাম</th>
-                    <th>ই-মেইল</th>
-                    <th>পাসওয়ার্ড</th>
+                    <th>প্যকেজ এর নাম</th>
+                    <th>মেয়াদ শেষ হওয়ার তারিখ</th>
                     <th>স্ট্যাটাস</th>
                     <th>রিনিউ করুন</th>
                 </tr>
@@ -25,10 +25,32 @@
                     <?php foreach ($shops as $val){ ?>
                     <tr>
                         <td><?php echo $val->shopName; ?></td>
-                        <td><?php echo $val->email; ?></td>
-                        <td><?php echo $val->password; ?></td>
-                        <td><?php echo statusView($val->status)?></td>
-                        <td><a class="btn demo-btn" onclick="updateShop(<?php echo $val->shop_id; ?>)" style="border-radius: 20px;color:#ffffff">এডিট করুন</a></td>
+                        <td><?php echo get_data_by_id('name','packages','package_id',$val->package_id);?></td>
+                        <td><?php echo package_expiry($val->shohozHishab_shop_id);?></td>
+                        <td>
+                            <?php echo statusView($val->status)?>
+
+                        </td>
+                        <td>
+
+                            <a class="btn demo-btn" onclick="updateShop(<?php echo $val->shop_id; ?>)" style="border-radius: 20px;color:#ffffff">Edit</a>
+                            <?php if (!empty($val->shohozHishab_shop_id)){ ?>
+                                <button class="btn demo-btn" onclick="shopDetailView(<?php echo $val->shop_id;?>)" style="border-radius: 20px;">Shop</button>
+                            <?php } ?>
+                            <?php if (($val->status == 0) && (shop_order_check_and_view($val->shop_id) == true)){ ?>
+                            <a href="<?php echo base_url()?>/Web/Dashboard/re_new/<?php echo $val->shop_id;?>" class="btn demo-btn" style="border-radius: 20px;">Renew</a>
+                            <?php } ?>
+                            <?php if (empty($val->shohozHishab_shop_id)){ ?>
+                                <a href="<?php echo base_url('Web/Dashboard/package_list?shopId='.$val->shop_id)?>" class="btn demo-btn" style="border-radius: 20px;color:#ffffff">Purchase package</a>
+                            <?php } ?>
+                            <?php if (empty($val->shohozHishab_shop_id)){ ?>
+                            <a href="<?php echo base_url('Web/Dashboard/shop_delete/'.$val->shop_id)?>" class="btn demo-btn" onclick="return confirm('Are you sure you want to Delete?')" style="border-radius: 20px;color:#ffffff">Delete</a>
+                            <?php } ?>
+
+                            <?php if ((!empty($val->shohozHishab_shop_id)) && (shop_order_check_and_view($val->shop_id) == true)){ ?>
+                                <a href="<?php echo base_url()?>/Web/Dashboard/change_package/<?php echo $val->shop_id;?>" class="btn demo-btn" style="border-radius: 20px;">Change package</a>
+                            <?php } ?>
+                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>

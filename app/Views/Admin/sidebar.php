@@ -103,6 +103,11 @@
 <!--                    <i class="fa fa-money"></i> <span>Payment</span>-->
 <!--                </a>-->
 <!--            </li>-->
+            <li>
+                <a href="<?php echo base_url('Admin/Shops') ?>">
+                    <i class="fa fa-home"></i> <span>Shops</span>
+                </a>
+            </li>
 
 
         </ul>

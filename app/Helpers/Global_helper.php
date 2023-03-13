@@ -144,6 +144,50 @@ function getListInOption($selected, $tblId, $needCol, $table)
     return $options;
 }
 
+function custome_db_email_exists_check($email) {
 
+    $db2 = \Config\Database::connect('custom');
+    $newDb = $db2->database;
+    $db2->query('use '.$newDb);
+
+    $tab  = $db2->table('users');
+    $email = $tab->where('email',$email)->countAllResults();
+
+
+    if (empty($email)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+function custome_db_email_exists_check_update($email,$shopId) {
+
+    $db2 = \Config\Database::connect('custom');
+    $newDb = $db2->database;
+    $db2->query('use '.$newDb);
+
+    $tab  = $db2->table('users');
+    $email = $tab->where('email',$email)->where('sch_id !=',$shopId)->countAllResults();
+
+
+    if (empty($email)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+function shop_order_check_and_view($shop_id){
+    $table = DB()->table('orders');
+    $order = $table->where('shop_id', $shop_id)->where('status','Pending');
+    $result = false;
+    if (empty($order->countAllResults())){
+        $result = true;
+    }
+    return $result;
+}
 
 

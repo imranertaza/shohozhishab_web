@@ -16,13 +16,13 @@
                         <div class="input-group mb-3 ">
                             <select class="form-control" name="shop_id" id="shop_id" required>
                                 <option value="">Please select shop</option>
-                                <?php foreach ($shops as $val) { ?>
-                                    <option value="<?php echo $val->shop_id; ?>"><?php echo $val->shopName; ?></option>
-                                <?php } ?>
+                                <?php foreach ($shops as $val) { if (shop_order_check_and_view($val->shop_id) == true){ $sel = (isset(newSession()->selecShop))?'selected':'';  ?>
+                                    <option value="<?php echo $val->shop_id; ?>" <?php echo $sel;?> ><?php echo $val->shopName; ?></option>
+                                <?php } } ?>
                             </select>
                         </div>
                         <div class="input-group mb-3 ">
-                            <a href="javascript:void(0)"  data-toggle="modal" data-target="#myModal3" >নতুন শপ তৈরি করুন</a>
+                            <a style="color:#E84420;" href="javascript:void(0)"  data-toggle="modal" data-target="#myModal3" >নতুন শপ তৈরি করুন</a>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p>Installation fee (1 time)</p>

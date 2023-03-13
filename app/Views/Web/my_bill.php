@@ -25,7 +25,10 @@
                         <td>
                             <?php if ($val->pay_status == 'Unpaid'){ ?>
                             <button class="btn demo-btn" style="border-radius: 20px;">UNPAID</button>
-                            <?php }else{ ?>PAID<?php } ?>
+                            <?php } ?>
+                            <?php if ($val->pay_status == 'Paid'){ ?>
+                                <button class="btn demo-btn" style="border-radius: 20px;background-color: green;">PAID</button>
+                            <?php }?>
                         </td>
                     </tr>
                     <?php } ?>

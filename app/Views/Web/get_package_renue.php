@@ -15,11 +15,10 @@
                     <div class="col-md-6" style="padding-right: 100px;">
                         <div class="input-group ">
                             <label class="col-form-label">Shop</label>
-                            <input type="hidden" name="order_id" value="<?php echo $orders->order_id; ?>">
                         </div>
                         <div class="input-group mb-3 ">
                             <select class="form-control" name="shop_id" id="shop_id" required>
-                                <option value="<?php echo $orders->shop_id; ?>"><?php echo get_data_by_id('shopName', 'shops', 'shop_id', $orders->shop_id); ?></option>
+                                <option value="<?php echo $shops->shop_id; ?>"><?php echo $shops->shopName; ?></option>
                             </select>
                         </div>
 
@@ -27,9 +26,10 @@
                             <label class="col-form-label">Package</label>
                         </div>
                         <div class="input-group mb-3 ">
-                            <select class="form-control" name="package_id" id="package_id" onchange="pack_detail(this.value)" required>
-                                <?php echo getListInOption($orders->package_id, 'package_id', 'name', 'packages') ?>
+                            <select class="form-control"  id="package_id"  disabled required>
+                                <?php echo getListInOption($shops->package_id, 'package_id', 'name', 'packages') ?>
                             </select>
+                            <input type="hidden" name="package_id" value="<?php echo $shops->package_id;?>">
                         </div>
                         <div id="packData" >
                             <div class="d-flex justify-content-between">
@@ -40,6 +40,17 @@
                             <div class="d-flex justify-content-between">
                                 <p>Total </p>
                                 <p><?php echo round($pack->price) ?>tk</p>
+                            </div>
+                        </div>
+
+                        <div class="payment">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" checked type="radio" name="payment" id="aamarpay" value="aamarpay">
+                                <label class="form-check-label" for="aamarpay">aamarpay (bkash, nagad, visa, mastercard)</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="payment" id="direct_payment" value="direct_payment">
+                                <label class="form-check-label" for="direct_payment">Direct Payment</label>
                             </div>
                         </div>
 

@@ -62,13 +62,20 @@
         });
     }
 
-    function orderStatus(val,orderId){
+    function orderStatusSub(val,orderId){
         $.ajax({
             url: '<?php echo base_url()?>/Admin/Order/orderStatusChenge',
             type: 'post',
             data: {status:val,orderId:orderId},
             success: function(response){
-                $("#message").html('<div class="alert alert-success alert-dismissible" role="alert">Subscribe update successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                if(response == true) {
+                    $("#example1").load(location.href + " #example1");
+                    $("#message").html('<div class="alert alert-success alert-dismissible" role="alert">Subscribe update successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                }
+                if(response == false) {
+                    $("#example1").load(location.href + " #example1");
+                    $("#message").html('<div class="alert alert-danger alert-dismissible" role="alert">Email already in use! please update your email address <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                }
             }
         });
     }

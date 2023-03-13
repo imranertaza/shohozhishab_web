@@ -52,7 +52,7 @@
                                     <td width="90">
                                         <?php if ($row->status == 'Active'){ ?>
                                         <?php echo $row->status; }else{ ?>
-                                            <select name="status" id="status" onchange="orderStatus(this.value ,'<?php echo $row->order_id;?>')" >
+                                            <select name="status" id="status" onchange="orderStatusSub(this.value ,'<?php echo $row->order_id;?>')" >
                                                 <option value="Active" <?php echo ($row->status == 'Active')?'selected':'';?> >Active</option>
                                                 <option value="Inactive" <?php echo ($row->status == 'Inactive')?'selected':'';?> >Inactive</option>
                                                 <option value="Pending" <?php echo ($row->status == 'Pending')?'selected':'';?> >Pending</option>
