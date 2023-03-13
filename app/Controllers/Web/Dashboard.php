@@ -766,6 +766,10 @@ class Dashboard extends BaseController
                 $invTable = DB()->table('invoice');
                 $invTable->insert($invData);
 
+                $webData['status'] = '1';
+                $webShopTable = DB()->table('shops');
+                $webShopTable->where('shop_id',$data['shop_id'])->update($webData);
+
                 $softPackId = get_data_by_id('software_pack_id', 'packages', 'package_id', $data['package_id']);
                 $shopId = get_data_by_id('shohozHishab_shop_id', 'shops', 'shop_id', $data['shop_id']);
 
