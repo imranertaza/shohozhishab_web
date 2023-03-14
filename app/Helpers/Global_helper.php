@@ -206,3 +206,14 @@ function title_by_value($title){
     }
     return $result;
 }
+
+function check_free_pack_used(){
+    $userId =  newSession()->user_id;
+    $table = DB()->table('customers');
+    $result = $table->where('customer_id',$userId)->get()->getRow();
+    $data = true;
+    if ($result->free_pack_used == '1'){
+        $data = false;
+    }
+    return $data;
+}

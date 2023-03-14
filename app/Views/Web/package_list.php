@@ -4,16 +4,17 @@
             <?php echo $top_mer;?>
         </div>
         <div class="col-12 da-div-pd-20" style="margin-top: 60px;">
-            <div class="price-box cus-da-pac" >
-                <p class="price-text-1">Free</p>
-                <p class="price-text-2"><span class="symbol">৳</span> Free</p>
-                <p class="price-text-3">One Month</p>
+            <?php foreach ($pack as $row){ if($row->price == 0){ if (check_free_pack_used() == true){ ?>
+                <div class="price-box cus-da-pac" >
+                    <p class="price-text-1">Free</p>
+                    <p class="price-text-2"><span class="symbol">৳</span> Free</p>
+                    <p class="price-text-3">One Month</p>
 
-                <p class="price-text-5">No Installation fee </p>
-                <center><p><a href="#" class="price-text-6">Everything</a></p></center>
-                <button class="btn btn-price-fr">Get Started</button>
-            </div>
-            <?php foreach ($pack as $row){ ?>
+                    <p class="price-text-5">No Installation fee </p>
+                    <center><p><a href="#" class="price-text-6">Everything</a></p></center>
+                    <a href="<?php echo base_url() ?>/Web/Dashboard/get_started_free/<?php echo $row->package_id;?>" class="btn btn-price-fr">Get Started</a>
+                </div>
+            <?php } }else{ ?>
                 <div class="price-box" style="margin-left: 40px">
                     <p class="price-text-1"><?php echo $row->name; ?></p>
                     <p class="price-text-2"><span class="symbol">৳</span> <?php echo $row->price; ?></p>
@@ -23,7 +24,7 @@
                     <center><p><a href="<?php echo base_url()?>/Home/detail" class="price-text-6">View Details</a></p></center>
                     <a href="<?php echo base_url() ?>/Web/Dashboard/get_started/<?php echo $row->package_id;?>" class="btn btn-price" style="color: #ffffff;">Get Started</a>
                 </div>
-            <?php } ?>
+            <?php } }?>
 
         </div>
     </div>

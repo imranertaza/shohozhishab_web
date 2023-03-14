@@ -66,7 +66,7 @@ class Package extends BaseController
 
         $this->validation->setRules([
             'name' => ['label' => 'Name', 'rules' => 'required|'],
-            'price' => ['label' => 'Price', 'rules' => 'required|is_natural_no_zero|max_length[32]'],
+            'price' => ['label' => 'Price', 'rules' => 'required|max_length[32]'],
             'subscription_type' => ['label' => 'Subscription Type', 'rules' => 'required'],
             'installation_fee' => ['label' => 'Installation Fee', 'rules' => 'required'],
             'software_pack_id' => ['label' => 'Software Pack', 'rules' => 'required'],
@@ -117,7 +117,7 @@ class Package extends BaseController
 
         $this->validation->setRules([
             'name' => ['label' => 'Name', 'rules' => 'required|'],
-            'price' => ['label' => 'Price', 'rules' => 'required|is_natural_no_zero|max_length[32]'],
+            'price' => ['label' => 'Price', 'rules' => 'required|max_length[32]'],
             'subscription_type' => ['label' => 'Subscription Type', 'rules' => 'required'],
             'installation_fee' => ['label' => 'Installation Fee', 'rules' => 'required'],
             'software_pack_id' => ['label' => 'Software Pack', 'rules' => 'required'],

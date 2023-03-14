@@ -393,6 +393,29 @@ class Dashboard extends BaseController
         }
     }
 
+    public function get_started_free($package_id)
+    {
+        $isLoggedInWeb = $this->session->isLoggedInWeb;
+        if (!isset($isLoggedInWeb) || $isLoggedInWeb != TRUE) {
+            return redirect()->to(site_url('/Login'));
+        } else {
+            $userId = $this->session->user_id;
+            $table = DB()->table('shops');
+
+            $data['shops'] = $table->where('reg_user_id', $userId)->get()->getResult();
+
+            $tablePack = DB()->table('packages');
+            $data['pack'] = $tablePack->where('package_id', $package_id)->get()->getRow();
+
+            $data['menu_select'] = 'package_list';
+            $data['top_mer'] = view('Web/da_top_btn');
+            echo view('Web/header_dashboard');
+            echo view('Web/sidebar', $data);
+            echo view('Web/get_package_free', $data);
+            echo view('Web/footer_dashboard');
+        }
+    }
+
     public function ajax_shop_action()
     {
         $package_id = $this->request->getPost('package_id');
@@ -661,6 +684,298 @@ class Dashboard extends BaseController
                 $invTable->insert($invData);
                 DB()->transComplete();
                 $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Payment successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                return redirect()->to(site_url('Web/Dashboard/shop_create'));
+            }
+        }
+    }
+
+    public function package_free_action()
+    {
+
+        $data['reg_user_id'] = $this->session->user_id;
+        $data['shop_id'] = $this->request->getPost('shop_id');
+        $data['package_id'] = $this->request->getPost('package_id');
+        $data['status'] = 'Active';
+        $data['detail'] = 'free_package';
+        $data['createdBy'] = '1';
+
+        $this->validation->setRules([
+            'shop_id' => ['label' => 'Shop', 'rules' => 'required'],
+            'package_id' => ['label' => 'package', 'rules' => 'required'],
+        ]);
+
+        if ($this->validation->run($data) == FALSE) {
+            $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">' . $this->validation->listErrors() . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            return redirect()->to(site_url('Web/Dashboard/get_started_free/' . $data['package_id']));
+        } else {
+            $checkShop = get_data_by_id('shohozHishab_shop_id','shops','shop_id',$data['shop_id']);
+            if (check_free_pack_used() == true) {
+                if (empty($checkShop)) {
+                    $shWebTable = DB()->table('shops');
+                    $shopDetail = $shWebTable->where('shop_id', $data['shop_id'])->get()->getRow();
+
+                    $is_exists_email = custome_db_email_exists_check($shopDetail->email);
+                    if ($is_exists_email == true) {
+                        DB()->transStart();
+
+                        $orderTable = DB()->table('orders');
+                        $orderTable->insert($data);
+                        $order_id = DB()->insertID();
+
+                        //invoice create
+                        $pacPrice = get_data_by_id('price', 'packages', 'package_id', $data['package_id']);
+                        $pacInstla = get_data_by_id('installation_fee', 'packages', 'package_id', $data['package_id']);
+                        $invData['order_id'] = $order_id;
+                        $invData['reg_user_id'] = $this->session->user_id;
+                        $invData['package_id'] = $data['package_id'];
+                        $invData['amount_original'] = 0;
+                        $invData['payment_method_id'] = 0;
+                        $invData['payment_method'] = 'free';
+                        $invData['aam_service_charge'] = 0;
+                        $invData['store_amount'] = 0;
+                        $invData['pay_status'] = 'Paid';
+                        $invData['aam_txnid'] = 0;
+                        $invData['mer_txnid'] = 0;
+                        $invData['createdBy'] = 1;
+                        $invTable = DB()->table('invoice');
+                        $invTable->insert($invData);
+
+                        $cusData['free_pack_used'] = '1';
+                        $cuTable = DB()->table('customers');
+                        $cuTable->where('customer_id', $this->session->user_id)->update($cusData);
+
+                        $softPackId = get_data_by_id('software_pack_id', 'packages', 'package_id', $data['package_id']);
+
+                        $db2 = \Config\Database::connect('custom');
+                        $newDb = $db2->database;
+                        DB()->query('use ' . $newDb);
+
+                        //shop create query
+                        $shopData['name'] = $shopDetail->shopName;
+                        $shopData['email'] = $shopDetail->email;
+                        $shopData['package_id'] = $softPackId;
+                        $shopData['status'] = '1';
+
+
+                        $shopTable = $db2->table('shops');
+                        $shopTable->insert($shopData);
+                        $shopsId = $db2->insertID();
+                        //shop create query
+
+                        //roles insert in roles table(start)
+                        $packageTable = $db2->table('package');
+                        $pack = $packageTable->where('package_id', $softPackId)->get()->getRow();
+                        $packPermission = (!empty($pack)) ? $pack->package_admin_permission : '{}';
+
+                        $role['sch_id'] = $shopsId;
+                        $role['role'] = 'Admin';
+                        $role['is_default'] = '1';
+                        $role['permission'] = $packPermission;
+                        $role['createdBy'] = $this->session->user_id;
+                        $role['createdDtm'] = date('Y-m-d h:i:s');
+
+                        $rolesTable = $db2->table('roles');
+                        $rolesTable->insert($role);
+                        $roleId = $db2->insertID();
+                        //roles insert in roles table(start)
+
+
+                        //create users in users table (start)
+                        $userData['sch_id'] = $shopsId;
+                        $userData['role_id'] = $roleId;
+                        $userData['is_default'] = 1;
+                        $userData['name'] = $shopDetail->shopName;
+                        $userData['email'] = $shopDetail->email;
+                        $userData['password'] = sha1($shopDetail->password);
+                        $userData['status'] = '1';
+                        $userData['createdBy'] = $this->session->user_id;
+                        $userData['createdDtm'] = date('Y-m-d h:i:s');
+
+                        $usersTable = $db2->table('users');
+                        $usersTable->insert($userData);
+                        //create users in users table (end)
+
+
+                        //create Vat in vat_register table (start)
+                        $vatData['sch_id'] = $shopsId;
+                        $vatData['is_default'] = 1;
+                        $vatData['name'] = "Default Vat Name";
+                        $vatData['vat_register_no'] = "BIN-0000-01";
+                        $vatData['createdBy'] = $this->session->user_id;
+                        $vatData['createdDtm'] = date('Y-m-d h:i:s');
+
+                        $vatTable = $db2->table('vat_register');
+                        $vatTable->insert($vatData);
+                        //create Vat in vat_register table (end)
+
+
+                        // create default store in stores table(start)
+                        $storeData['sch_id'] = $shopsId;
+                        $storeData['name'] = 'Default';
+                        $storeData['description'] = 'Default Store';
+                        $storeData['is_default'] = '1';
+                        $storeData['createdDtm'] = date('Y-m-d h:i:s');
+
+                        $storeTable = $db2->table('stores');
+                        $storeTable->insert($storeData);
+                        // create default store in stores table(end)
+
+
+                        //general settings insert in gen_settings table (start)
+                        $gen_settingsData = array(
+                            array('sch_id' => $shopsId, 'label' => 'barcode_img_size', 'value' => '100'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'barcode_type', 'value' => 'C128A'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'business_type', 'value' => 'Ownership business'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'currency', 'value' => 'BDT'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'currency_before_symbol', 'value' => '৳'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'currency_after_symbol', 'value' => '/-'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'running_year', 'value' => '2023-2024'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'disable_frontend', 'value' => '0'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'phone_code', 'value' => '880'
+                            ),
+                            array('sch_id' => $shopsId, 'label' => 'country', 'value' => 'Bangladesh'
+                            ),
+
+                        );
+                        $gen_settingsTable = $db2->table('gen_settings');
+                        $gen_settingsTable->insertBatch($gen_settingsData);
+                        //general settings insert in gen_settings table (end)
+
+                        //customer type create(start)
+                        $cusTypeData = array(
+                            'sch_id' => $shopsId,
+                            'type_name' => 'regular',
+                            'createdBy' => $shopsId,
+                            'createdDtm' => date('Y-m-d h:i:s')
+                        );
+                        $customer_typeTable = $db2->table('customer_type');
+                        $customer_typeTable->insert($cusTypeData);
+                        //customer type create(end)
+
+
+                        $endDate = date('Y-m-d', strtotime('+30 days', strtotime(str_replace('/', '-', date("Y-m-d")))));
+                        $licKey = uniqid();
+                        $licData['sch_id'] = $shopsId;
+                        $licData['start_date'] = date("Y-m-d");
+                        $licData['end_date'] = $endDate;
+                        $licData['lic_key'] = $licKey;
+
+                        $licenseTable = $db2->table('license');
+                        $licenseTable->insert($licData);
+
+                        $shopStData['status'] = '1';
+                        $shopTable = $db2->table('shops');
+                        $shopTable->where('sch_id', $shopsId)->update($shopStData);
+
+                        $usershData = ['status' => 1];
+                        $tabUs = $db2->table('users');
+                        $tabUs->where('sch_id', $shopsId)->where('is_default', '1')->update($usershData);
+
+                        $oldDb = DB()->database;
+                        DB()->query('use ' . $oldDb);
+
+
+                        $shopDataId['shohozHishab_shop_id'] = $shopsId;
+                        $shopDataId['package_id'] = $data['package_id'];
+                        $shWebTable = DB()->table('shops');
+                        $shWebTable->where('shop_id', $data['shop_id'])->update($shopDataId);
+
+                        DB()->transComplete();
+
+
+                        $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Payment successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        return redirect()->to(site_url('Web/Dashboard/shop_create'));
+                    } else {
+                        $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">Email already in use! please update your email address<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        return redirect()->to(site_url('Web/Dashboard/get_started_free/' . $data['package_id']));
+                    }
+                } else {
+
+                    DB()->transStart();
+                    $data2['reg_user_id'] = $this->session->user_id;
+                    $data2['shop_id'] = $this->request->getPost('shop_id');
+                    $data2['package_id'] = $this->request->getPost('package_id');
+                    $data2['detail'] = 'free_package';
+                    $data2['status'] = 'Active';
+                    $data2['createdBy'] = '1';
+
+                    $orderTable = DB()->table('orders');
+                    $orderTable->insert($data2);
+                    $order_id = DB()->insertID();
+
+                    //invoice create
+                    $invData['order_id'] = $order_id;
+                    $invData['reg_user_id'] = $this->session->user_id;
+                    $invData['package_id'] = $data['package_id'];
+                    $invData['amount_original'] = 0;
+                    $invData['payment_method_id'] = 0;
+                    $invData['payment_method'] = 'free';
+                    $invData['aam_service_charge'] = 0;
+                    $invData['store_amount'] = 0;
+                    $invData['pay_status'] = 'Paid';
+                    $invData['aam_txnid'] = 0;
+                    $invData['mer_txnid'] = 0;
+                    $invData['createdBy'] = 1;
+                    $invTable = DB()->table('invoice');
+                    $invTable->insert($invData);
+
+                    $cusData['free_pack_used'] = '1';
+                    $cuTable = DB()->table('customers');
+                    $cuTable->where('customer_id', $this->session->user_id)->update($cusData);
+
+
+                    $webData['package_id'] = $data['package_id'];
+                    $webData['status'] = '1';
+                    $webShopTable = DB()->table('shops');
+                    $webShopTable->where('shop_id', $data['shop_id'])->update($webData);
+
+                    $softPackId = get_data_by_id('software_pack_id', 'packages', 'package_id', $data['package_id']);
+
+                    $db2 = \Config\Database::connect('custom');
+                    $newDb = $db2->database;
+                    DB()->query('use ' . $newDb);
+
+                    $endDate = date('Y-m-d', strtotime('+30 days', strtotime(str_replace('/', '-', date("Y-m-d")))));
+                    $licData['start_date'] = date("Y-m-d");
+                    $licData['end_date'] = $endDate;
+
+                    $licenseTable = $db2->table('license');
+                    $licenseTable->where('sch_id', $checkShop)->update($licData);
+
+                    $packageTable = $db2->table('package');
+                    $pack = $packageTable->where('package_id', $softPackId)->get()->getRow();
+                    $packPermission = (!empty($pack)) ? $pack->package_admin_permission : '{}';
+
+                    $role['permission'] = $packPermission;
+
+                    $rolesTable = $db2->table('roles');
+                    $rolesTable->where('sch_id', $checkShop)->where('is_default', '1')->update($role);
+
+
+                    $shopStData['status'] = '1';
+                    $shopStData['package_id'] = $softPackId;
+                    $shopTable = $db2->table('shops');
+                    $shopTable->where('sch_id', $checkShop)->update($shopStData);
+
+                    $usershData = ['status' => '1'];
+                    $tabUs = $db2->table('users');
+                    $tabUs->where('sch_id', $checkShop)->where('is_default', '1')->update($usershData);
+
+
+                    DB()->transComplete();
+                    $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible" role="alert" >Payment successful <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    return redirect()->to(site_url('Web/Dashboard/shop_create'));
+                }
+            }else{
+                $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">already used free package<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 return redirect()->to(site_url('Web/Dashboard/shop_create'));
             }
         }
