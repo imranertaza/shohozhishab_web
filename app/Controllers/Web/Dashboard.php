@@ -1182,6 +1182,9 @@ class Dashboard extends BaseController
             $table = DB()->table('shops');
             $data['shop'] = $table->where('shop_id',$shopId)->get()->getRow();
 
+            $tablePack = DB()->table('packages');
+            $data['pack'] = $tablePack->where('price !=','0')->get()->getResult();
+
             $data['menu_select'] = 'shop_create';
             $data['top_mer'] = view('Web/da_top_btn');
             echo view('Web/header_dashboard');

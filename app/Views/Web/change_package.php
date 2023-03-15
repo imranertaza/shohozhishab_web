@@ -27,7 +27,10 @@
                         </div>
                         <div class="input-group mb-3 ">
                             <select class="form-control" name="package_id" onchange="packPrice(this.value);buttonShow(this.value,'<?php echo $shop->package_id;?>')"  id="package_id" required>
-                                <?php echo getListInOption($shop->package_id, 'package_id', 'name', 'packages') ?>
+                                
+                                <?php foreach ($pack as $item){ ?>
+                                <option value="<?php echo $item->package_id;?>" <?php echo ($shop->package_id == $item->package_id)?'selected':'';?>  ><?php echo $item->name;?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div id="packData" >
@@ -58,6 +61,10 @@
                         </div>
 
                         <button type="submit" class="btn btn-info" id="btnPay" style="float: right; display: none;" >Pay</button>
+                        <br>
+                        <?php if (check_free_pack_used() == true){ $freePackId = get_data_by_id('package_id','packages','price','0')?>
+                        <a href="<?php echo base_url() ?>/Web/Dashboard/get_started_free/<?php echo $freePackId;?>" style="color:#ee4824;" >Get Free Package</a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
