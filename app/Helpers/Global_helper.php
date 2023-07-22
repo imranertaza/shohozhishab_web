@@ -102,7 +102,8 @@ function get_package_other_db($selected = 'sel') {
 
     $db2 = \Config\Database::connect('custom');
     $newDb = $db2->database;
-    DB()->query('use '.$newDb);
+
+    $db2->query('use '.$newDb);
     $packageTable = $db2->table('package');
     $pack = $packageTable->get()->getResult();
 

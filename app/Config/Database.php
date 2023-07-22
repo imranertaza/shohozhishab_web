@@ -104,17 +104,17 @@ class Database extends Config
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
-        if (ENVIRONMENT === 'testing') {
-            $this->defaultGroup = 'tests';
-            $this->custom = 'custom';
-        }
-        if (ENVIRONMENT === 'development') {
-            $this->defaultGroup = 'default';
-            $this->custom = 'custom';
-        }
-        if (ENVIRONMENT === 'production') {
-            $this->defaultGroup = 'default';
-            $this->custom = 'custom';
-        }
+//        if (ENVIRONMENT === 'testing') {
+//            $this->defaultGroup = 'tests';
+//            $this->custom = 'custom';
+//        }
+//        if (ENVIRONMENT === 'development') {
+//            $this->defaultGroup = 'default';
+//            $this->custom = 'custom';
+//        }
+//        if (ENVIRONMENT === 'production') {
+//            $this->defaultGroup = 'default';
+//            $this->custom = 'custom';
+//        }
     }
 }
